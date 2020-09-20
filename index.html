@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>BugByDaylight</title>
+        <script src="js/public/three/three.js" data-ke-src="public/three/three.js"></script>
+        <script src="js/public/three/stats.min.js"></script>
+        <script src="js/public/three/three.module.js"></script>
+        <script src="js/public/three/OrbitControls.js"></script>
+        <script src="js/public/three/SceneUtils.js"></script>
+        <script src="js/public/three/Lensflare.js"></script>
+        <script src="js/public/three/loaders/FBXLoader.js"></script>
+        <script src="js/public/three/loaders/MTLLoader.js"></script>
+        <script src="js/public/three/loaders/OBJLoader.js"></script>
+        <script src="js/public/three/loaders/TGALoader.js"></script>
+        <script src="js/public/three/loaders/DDSLoader.js"></script>
+
+        <script src="js/public/three/loaders/mmd/mmdparser.min.js"></script>
+        <script src="js/public/three/ammo.js"></script>
+        <script src="js/public/three/loaders/mmd/Detector.js"></script>
+        <script src="js/public/three/loaders/MMDLoader.js"></script>
+        <script src="js/public/three/loaders/mmd/MMDPhysics.js"></script>
+        <script src="js/public/three/loaders/mmd/CCDIKSolver.js"></script>
+
+        <script src="js/public/libs/inflate.min.js"></script>
+        <script src="js/public/libs/jquery-1.12.4.min.js"></script>
+        <script src="js/public/libs/jquery.cookie.js"></script>
+        <style type="text/css">
+            div#canvas-frame {
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                background-color: #EEEEEE;
+            }
+            div#progress {
+                width: 100%;
+                height: 30px;
+                background: rgb(42, 138, 248);
+            }
+            div#bar {
+                width: 1%;
+                height: 28px;
+                margin-top: 1px;
+                background: purple;
+            }
+        </style>
+    </head>
+
+    <body onkeypress="game.playAnimation.call(game, 1)">
+        <script type="module" src="js/BugByDaylight.js"></script>
+        <script type="module" >
+            import {BugByDaylight} from "./js/BugByDaylight.js";
+
+            var game;
+            document.addEventListener("DOMContentLoaded", function(){
+                game = new BugByDaylight(); 
+                window.game = game;
+            });
+        </script>
+        <!--fixed Row 进度条-->
+        <div id="wrap">
+            <div class="row foot">
+                <div id="progressModular" class="col-lg-offset-4 col-md-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-1 col-xs-10 col-sm-6 col-md-4 ">
+                    <p id="progressTitle"></p>
+                    <div id="progressBarF" class="progress progress-striped  active">
+                        <div id="progressBar" class="progress-bar progress-bar-info " style="width: 0%">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
