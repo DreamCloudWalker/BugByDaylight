@@ -1,0 +1,26 @@
+1) Note that I assume you already know how to apply effects to a model.
+2) In the MMEffects tab within MikuMikuDance, open the Map Effect File
+window and find the model you want to apply effects to.
+3) Right-click on it and select "Subset-Extract"
+4)You will see a list of materials appear under the object. Apply the
+following effects to each material (the normal-mapping effects are found 
+in the same folder containing the model's textures):
+
+For HONOKA (Costume 1):
+
+Skirt; Skirt Alt -> skirt.fx
+Blouse -> blouse.fx
+Buttons; Shoes -> buttons.fx
+Stockings; Stockings Alt -> stockings.fx
+Head; Eyes; Irises -> face.fx
+Furballs -> fur.fx
+Glove -> glove.fx
+Underwear; Underwear Alt -> underwear.fx
+Shirt; Shirt Alt -> shirt.fx
+Skin -> body.fx
+Fuzz -> fuzz.fx
+Hair Front -> hair_front.fx
+Hair Head -> hair_head.fx
+Hair Back -> hair_back.fx
+Ponytail -> hair_ponytail.fx
+Everything else -> default.fx

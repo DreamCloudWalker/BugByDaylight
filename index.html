@@ -26,6 +26,9 @@
         <script src="js/public/libs/jquery-1.12.4.min.js"></script>
         <script src="js/public/libs/jquery.cookie.js"></script>
         <style type="text/css">
+            div#horizontal {
+                display: flex;
+            }
             div#canvas-frame {
                 border: none;
                 cursor: pointer;
@@ -35,40 +38,291 @@
             }
             div#progress {
                 width: 100%;
-                height: 30px;
-                background: rgb(42, 138, 248);
+                height: 3px;
+                background: #FFFFFF;
             }
             div#bar {
-                width: 1%;
-                height: 28px;
+                width: 0%;
+                height: 2px;
                 margin-top: 1px;
-                background: purple;
+                background: #FFA900;
+            }
+            div#text-progress {
+                float: left;
+            }
+            /* The switch - the box around the slider */
+            .switch {
+                position: relative;
+                display: inline-block;
+                width: 50px;
+                height: 20px;
+            }
+
+            /* Hide default HTML checkbox */
+            .switch input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+
+            /* The slider */
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background-color: #ccc;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            .slider:before {
+                position: absolute;
+                content: "";
+                height: 16px;
+                width: 16px;
+                left: 2px;
+                bottom: 2px;
+                background-color: white;
+                -webkit-transition: .4s;
+                transition: .4s;
+            }
+
+            input:checked + .slider {
+                background-color: #2196F3;
+            }
+
+            input:focus + .slider {
+                box-shadow: 0 0 1px #2196F3;
+            }
+
+            input:checked + .slider:before {
+                -webkit-transform: translateX(12px);
+                -ms-transform: translateX(12px);
+                transform: translateX(12px);
+            }
+
+            /* Rounded sliders */
+            .slider.round {
+                border-radius: 20px;
+            }
+
+            .slider.round:before {
+                border-radius: 50%;
             }
         </style>
     </head>
 
-    <body onkeypress="game.playAnimation.call(game, 1)">
+    <body onkeypress="game.onKeyPress.call(game, event)">
         <script type="module" src="js/BugByDaylight.js"></script>
         <script type="module" >
             import {BugByDaylight} from "./js/BugByDaylight.js";
 
             var game;
-            document.addEventListener("DOMContentLoaded", function(){
+            document.addEventListener("DOMContentLoaded", function() {
                 game = new BugByDaylight(); 
                 window.game = game;
             });
         </script>
         <!--fixed Row 进度条-->
-        <div id="wrap">
-            <div class="row foot">
-                <div id="progressModular" class="col-lg-offset-4 col-md-offset-4 col-md-offset-3 col-sm-offset-3 col-xs-offset-1 col-xs-10 col-sm-6 col-md-4 ">
-                    <p id="progressTitle"></p>
-                    <div id="progressBarF" class="progress progress-striped  active">
-                        <div id="progressBar" class="progress-bar progress-bar-info " style="width: 0%">
-                        </div>
-                    </div>
-                </div>
+        <div id="main-container">
+            <div id="horizontal">
+                <h4 style="width: 70px; height: 15px; margin: 2px">模型</h4>
+                <select id="character_select" name="character" style="width: 80px; height: 18px; margin: 5px" onchange="game.characterSelect.call(game, value)">
+                    <option value="0" id="feng_min">
+                        凤敏 DBD
+                    </option>
+                    <option value="1" id="meg_thomas">
+                        Meg Thomas DBD
+                    </option>
+                    <option value="2" id="huntress">
+                        🐰妈 DBD
+                    </option>
+                    <option value="3" id="amanda">
+                        🐷妹 DBD
+                    </option>
+                    <option value="4" id="jill1">
+                        Jill RE1
+                    </option>
+                    <option value="5" id="jill3">
+                        Jill RE3
+                    </option>
+                    <option value="6" id="jill5">
+                        Jill RE5
+                    </option>
+                    <option value="7" id="claire">
+                        Claire RE2
+                    </option>
+                    <option value="8" id="helena">
+                        Helena RE6
+                    </option>
+                    <option value="9" id="ryza">
+                        Sherry RE6
+                    </option>
+                    <option value="10" id="amanda">
+                        Ada RE4
+                    </option>
+                    <option value="11" id="rebecca">
+                        Rebecca Chambers
+                    </option>
+                    <option value="12" id="tifa">
+                        Tifa FF7
+                    </option>
+                    <option value="13" id="yuna">
+                        Yuna FF7
+                    </option>
+                    <option value="14" id="tekken">
+                        Miharu_Hirano
+                    </option>
+                    <option value="15" id="pubg_male">
+                        吃鸡男 PUBG
+                    </option>
+                    <option value="16" id="pubg_female">
+                        吃鸡女 PUBG
+                    </option>
+                    <option value="17" id="cf_suzy">
+                        Suzy CF
+                    </option>
+                    <option value="18" id="cs02_707">
+                        707 CS02
+                    </option>
+                    <option value="19" id="benedict">
+                        Benedict FEAROnline
+                    </option>
+                    <option value="20" id="ironman">
+                        IronMan
+                    </option>
+                    <option value="21" id="bw">
+                        Black Widow FF
+                    </option>
+                    <option value="22" id="bwt">
+                        Black Widow TeamSuit
+                    </option>
+                    <option value="23" id="sg">
+                        Super Girl
+                    </option>
+                    <option value="24" id="doctor">
+                        Doctor Strange
+                    </option>
+                    <option value="25" id="Antman">
+                        Antman
+                    </option>
+                    <option value="26" id="superman">
+                        Superman
+                    </option>
+                    <option value="27" id="lara">
+                        Lara Croft
+                    </option>
+                    <option value="28" id="petra">
+                        Petra Sim4
+                    </option>
+                    <option value="29" id="alice">
+                        Alice KOFAS
+                    </option>
+                    <option value="30" id="athena">
+                        Athena KOFAS
+                    </option>
+                    <option value="31" id="reisalin">
+                        Reisalin Stout
+                    </option>
+                    <option value="32" id="helen">
+                        Helen_Parr
+                    </option>
+                    <option value="33" id="sly">
+                        Sly_Cooper
+                    </option>
+                    <option value="34" id="lisbeth">
+                        Lisbeth
+                    </option>
+                    <option value="35" id="leifang">
+                        Leifang DOA
+                    </option>
+                    <option value="36" id="luna">
+                        Luna_Pomelo DOA
+                    </option>
+                    <option value="37" id="honoka">
+                        Honoka_Jeans DOA6
+                    </option>
+                    <option value="38" id="honoka">
+                        Honoka_Stu DOA6
+                    </option>
+                    <option value="39" id="marie">
+                        Marie_Rose_otaku DOA6
+                    </option>
+                    <option value="40" id="marie_c">
+                        Marie_Rose_C DOA
+                    </option>
+                    <option value="41" id="marie_r">
+                        Marie_Rose DOA
+                    </option>
+                    <option value="42" id="kasumi">
+                        Kasumi_Furisode DOA6
+                    </option>
+                    <option value="43" id="mai">
+                        Mai_Shiranui DOA6
+                    </option>
+                    <option value="44" id="momiji">
+                        Momiji_Santa DOA6
+                    </option>
+                </select>
+                <h4 style="width: 70px; height: 15px; margin: 2px">动作</h4>
+                <select id="motion_select" name="motion" style="width: 70px; height: 18px; margin: 5px" onchange="game.motionSelect.call(game, value)">
+                    <option value="0" id="banhusha">
+                        落花情
+                    </option>
+                    <option value="1" id="qiansixi">
+                        牵丝戏
+                    </option>
+                    <option value="2" id="hongzhaoyuan">
+                        红昭愿
+                    </option>
+                    <option value="3" id="hongzhaoyuan">
+                        醉伶
+                    </option>
+                    <option value="4" id="hongzhaoyuan">
+                        恋人心
+                    </option>
+                    <option value="5" id="hongzhaoyuan">
+                        学猫叫
+                    </option>
+                    <option value="6" id="hongzhaoyuan">
+                        海草舞
+                    </option>
+                    <option value="7" id="hongzhaoyuan">
+                        小苹果
+                    </option>
+                    <option value="8" id="barbarbar">
+                        Bar Bar Bar
+                    </option>
+                    <option value="9" id="WhatYouWaitingFor">
+                        WhatYouWaitingFor
+                    </option>
+                    <option value="10" id="coffin_dance">
+                        黑人抬棺
+                    </option>
+                </select>
+
+                <label style="width: 130px; margin: 2px">自动镜头</label>
+                <label class="switch" style="width: 33px; margin: 4px">
+                    <input id="auto_camera_switch" type="checkbox" checked onchange="game.updateAutoCameraStatus.call(game, checked)">
+                    <span class="slider round"></span>
+                </label>
+
+                <label style="margin: 5px">Debug</label>
+                <label class="switch" style="width: 33px; margin: 4px">
+                    <input id="debug_switch" type="checkbox" onchange="game.updateDebugStatus.call(game, checked)">
+                    <span class="slider round"></span>
+                </label>
+
+                <h4 style="width: 100px; height: 15px; margin: 2px;">加载进度：</h4>
+                <div><h4 id="text-progress" style="width: 130px; height: 15px; margin: 2px">0%</h3></div>
             </div>
+            <div id="progress">
+                <div id="bar"></div>
+            </div>
+            <div id="canvas-frame"></div>
         </div>
     </body>
 </html>

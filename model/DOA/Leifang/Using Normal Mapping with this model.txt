@@ -1,0 +1,21 @@
+1) Note that I assume you already know how to apply effects to a model.
+2) In the MMEffects tab within MikuMikuDance, open the Map Effect File
+window and find the model you want to apply effects to.
+3) Right-click on it and select "Subset-Extract"
+4)You will see a list of materials appear under the object. Apply the
+following effects to each material (the normal-mapping effects are found 
+in the same folder containing the model's textures):
+
+For LEIFANG (DOA6, Costume 1) (either color):
+
+Skin -> skin.fx
+Outfit 1 -> outfit_1.fx
+Outfit 2 -> outfit_2.fx
+Eyes; Face; Teeth; Tongue -> face.fx
+Face Paint -> face_paint.fx
+Eye Shading; Lashes Lower; Lashes Upper; Ribbon -> default.fx
+Scalp; Bangs Set 1 -> hair_1.fx
+Bangs Set 2 -> hair_2.fx
+Twintails 1 -> twintails_2.fx
+Twintails 2; Twintails 3 -> twintails_1.fx
+Twintails 4 -> twintails_3.fx

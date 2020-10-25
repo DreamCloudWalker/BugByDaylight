@@ -85,15 +85,17 @@ THREE.MMDLoader.prototype.load = function ( modelUrl, vmdUrls, callback, onProgr
 
 	var scope = this;
 
-	this.loadModel( modelUrl, function ( mesh ) {
+	return this.loadModel( modelUrl, function ( mesh ) {
+		if (null != vmdUrls) {
+			scope.loadVmds( vmdUrls, function ( vmd ) {
 
-		scope.loadVmds( vmdUrls, function ( vmd ) {
+				scope.pourVmdIntoModel( mesh, vmd );
+				callback( mesh );
 
-			scope.pourVmdIntoModel( mesh, vmd );
+			}, onProgress, onError );
+		} else {	// for load MMD Scene
 			callback( mesh );
-
-		}, onProgress, onError );
-
+		}
 	}, onProgress, onError );
 
 };
@@ -105,7 +107,7 @@ THREE.MMDLoader.prototype.loadModel = function ( url, callback, onProgress, onEr
 	var texturePath = this.extractUrlBase( url );
 	var modelExtension = this.extractExtension( url );
 
-	this.loadFileAsBuffer( url, function ( buffer ) {
+	return this.loadFileAsBuffer( url, function ( buffer ) {
 
 		callback( scope.createModel( buffer, modelExtension, texturePath, onProgress, onError ) );
 
@@ -472,19 +474,19 @@ THREE.MMDLoader.prototype.loadFile = function ( url, onLoad, onProgress, onError
 
 THREE.MMDLoader.prototype.loadFileAsBuffer = function ( url, onLoad, onProgress, onError ) {
 
-	this.loadFile( url, onLoad, onProgress, onError, 'arraybuffer' );
+	return this.loadFile( url, onLoad, onProgress, onError, 'arraybuffer' );
 
 };
 
 THREE.MMDLoader.prototype.loadFileAsText = function ( url, onLoad, onProgress, onError ) {
 
-	this.loadFile( url, onLoad, onProgress, onError, 'text' );
+	return this.loadFile( url, onLoad, onProgress, onError, 'text' );
 
 };
 
 THREE.MMDLoader.prototype.loadFileAsShiftJISText = function ( url, onLoad, onProgress, onError ) {
 
-	this.loadFile( url, onLoad, onProgress, onError, 'text', 'text/plain; charset=shift_jis' );
+	return this.loadFile( url, onLoad, onProgress, onError, 'text', 'text/plain; charset=shift_jis' );
 
 };
 

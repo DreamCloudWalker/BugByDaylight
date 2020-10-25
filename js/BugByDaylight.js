@@ -1,9 +1,76 @@
 class BugByDaylight {
     constructor() {
+        this.COFFIN_DANCE_INDEX = 10;
         this.mClock = new THREE.Clock();
-        this.mNurseAnims = ["death", "attack", "run", "idle"]; 
-        this.mKoreaAnims = ["walk", "tidy"];
+        this.mModelFiles = [
+            // 黎明Bug
+            "/model/DBD/fengmin/Feng.pmx", "/model/DBD/meg/meg.pmx", "/model/DBD/huntress/Huntress.pmx", 
+            "/model/DBD/amanda/Amanda.pmx", 
+            // 卡婊危机
+            "/model/RE/jill1/Jill.pmx", "/model/RE/jill3/JillRE3remake.pmx", "/model/RE/jill5/Jill.pmx", 
+            "/model/RE/claire/ClaireCasual.pmx", "/model/RE/helena/Helena_TallOaks.pmx", "/model/RE/sherry/Sherry.pmx", 
+            "/model/RE/ada/Ada.pmx", "/model/RE/Rebecca/Rebecca_Chambers.pmx", 
+            // 最终幻想
+            "/model/FF/Tifa/Tifa.pmx", "/model/FF/yuna/pmx/yuna.pmx", 
+            // 铁拳
+            "/model/Tekken/Miharu_Hirano/Miharu_Hirano.pmx", 
+            // 绝地求生
+            "/model/PUBG/PUGB_Male/Male.pmx", "/model/PUBG/PUBG_Female_Base/Female.pmx", "/model/PUBG/CF_Suzy_Miss_A/Suzy_Brown.pmx", 
+            "/model/PUBG/CSO2_707/707.pmx", "/model/PUBG/FEAROnline_Benedict/Benedict.pmx", 
+            // 漫威
+            "/model/Marvel/Ironman/Ironman.pmx", "/model/Marvel/Black_Widow_FF/FF.pmx", "/model/Marvel/Black_Widow_Team_Suit/Team-Suit.pmx",
+            "/model/Marvel/Supergirl/Hitomi_Supergirl.pmx", "/model/Marvel/Doctor_Strange/Doctor_Strange.pmx", "/model/Marvel/Antman/Antman.pmx",
+            "/model/Marvel/Superman/Superman.pmx",
+            // 古墓丽影
+            "/model/TR/Lara_Croft/Lara_Croft.pmx",
+            // Sim4
+            "/model/Sim/Petra/Petra.pmx",
+            // 动画
+            "/model/Cartoon/Alice/Alice.pmx", "/model/Cartoon/Athena/Athena.pmx", "/model/Cartoon/Reisalin_Stout/Reisalin_Stout_Black.pmx", 
+            "/model/Cartoon/Helen_Parr/Mrs_Incredible.pmx", "/model/Cartoon/Sly_Cooper/Sly_Cooper.pmx", "/model/Cartoon/Lisbeth/Lisbeth.pmx", 
+            // DOA 6
+            "/model/DOA/Leifang/Leifang.pmx", "/model/DOA/Luna_Pomelo/Luna_Pomelo.pmx", "/model/DOA/Honoka/honoka_c13.pmx", 
+            "/model/DOA/Honoka_Stu/honoka_c1.pmx", 
+            "/model/DOA/Marie/Marie_Rose_otaku.pmx", "/model/DOA/Marie_Rose_C/Marie_Rose_C.pmx", "/model/DOA/Marie_Rose/Marie_Rose.pmx",
+            "/model/DOA/Kasumi_Furisode/Kasumi_Furisode.pmx", "/model/DOA/Mai_Shiranui/Mai_Shiranui.pmx", "/model/DOA/Momiji_Santa/Momiji_Santa.pmx",
+        ];
+        this.mModelForCoffinDanceFiles = [
+            "/model/DBD/Ghostface/ghostface.pmx", "/model/DBD/Leatherface/Leatherface.pmx", "/model/DBD/MichealMyers/MichealMyers.pmx", 
+            "/model/DBD/Freddy/Freddy.pmx", 
+        ];
+        this.mMotionForCoffinDanceFiles = [
+            ["/motion/CoffinDance/MAN1.vmd"], ["/motion/CoffinDance/MAN2.vmd"], ["/motion/CoffinDance/MAN3.vmd"], 
+            ["/motion/CoffinDance/MAN4.vmd"], 
+        ]
+        this.mMotionFiles = [
+            ["/motion/LuoHuaQinMotion.vmd"], ["/motion/QianSiXiMotion.vmd"], 
+            ["/motion/HongZhaoYuanMotion.vmd"], ["/motion/ZuiLinMotion.vmd"], 
+            ["/motion/LianRenXinMotion.vmd"], 
+            ["/motion/LearnCatMotion.vmd"], ["/motion/HaiCaoMotion.vmd"], 
+            ["/motion/LittleAppleMotion.vmd"], 
+            ["/motion/BarBarBarMotion3.vmd"], ["/motion/WhatYouWaitingForMotion.vmd"], 
+            ["/motion/CoffinDance/CORONA-CHAN.vmd"]
+        ];
+        this.mCameraFiles = [
+            ["/motion/LuoHuaQinCamera.vmd"], ["/motion/QianSiXiCamera.vmd"], 
+            ["/motion/HongZhaoYuanCamera.vmd"], , ["/motion/ZuiLinCamera.vmd"], 
+            ["/motion/LianRenXinCamera.vmd"],
+            ["/motion/LearnCatCamera.vmd"], ["/motion/JiLeCamera.vmd"], 
+            ["/motion/LittleAppleCamera.vmd"], 
+            ["/motion/BarBarBarCamera.vmd"], ["/motion/WhatYouWaitingForCamera.vmd"], 
+            ["/motion/CoffinDance/CAMERA.vmd"]
+        ];
+        this.mMusicFiles = [
+            "/music/LuoHuaQin.mp3", "/music/QianSiXi.mp3", "/music/HongZhaoYuan.mp3", 
+            "/music/ZuiLin.mp3", "/music/LianRenXin.mp3", 
+            "/music/LearnCatCut.mp3", "/music/HaiCaoCut.mp3", "/music/LittleApple.mp3", 
+            "/music/BarBarBar.mp3", "/music/WaitingFor.mp3", "/music/CoffinDance.wav"
+        ];
         this.mDebug = false;
+        this.mAutoCamera = true;
+        this.mAbortLoader = false;
+        this.mLastModelIndex = 0;
+        this.mLastMotionIndex = 0;
 
 		this.init();
     }
@@ -24,25 +91,23 @@ class BugByDaylight {
         this.mRenderer.shadowMap.enabled = true; // 麻痹的这一个d搞了我一下午，为什么编译器不会报错，引擎的问题还是js的问题
         this.mRenderer.shadowMap.type = THREE.PCFSoftShadowMap; // 默认的是THREE.PCFShadowMap，没有设置的这个清晰 
         this.mRenderer.shadowCameraNear = 0.5;
-        this.mRenderer.shadowCameraFar = 10000;
+        this.mRenderer.shadowCameraFar = 1000;
         this.mRenderer.shadowMapWidth = 4096;
         this.mRenderer.shadowMapHeight = 4096;
         this.mRenderer.setSize(window.innerWidth, window.innerHeight);
         // add layout
-        this.mContainer = document.createElement('div');
-        document.body.appendChild(this.mContainer);
+        // this.mContainer = document.createElement('div');
+        // document.body.appendChild(this.mContainer);
+        this.mContainer = document.getElementById('canvas-frame')
         this.mContainer.appendChild(this.mRenderer.domElement);
         this.mRenderer.setClearColor(0xffffff, 1.0);
         // this.mRenderer.gammaInput = true;
         // this.mRenderer.gammaOutput = true;
     
-        if (this.mDebug) {
-            this.mStats = new Stats();
-            this.mStats.domElement.style.position = 'absolute';
-            this.mStats.domElement.style.left = '5px';
-            this.mStats.domElement.style.top = '5px';
-            this.mContainer.appendChild(this.mStats.dom);
-        }
+        this.mStats = new Stats();
+        this.mStats.domElement.style.position = 'absolute';
+        this.mStats.domElement.style.left = '10px';
+        this.mStats.domElement.style.top = '50px';
 
         this.mContinuous = false;
     
@@ -51,14 +116,14 @@ class BugByDaylight {
     }
 
     initCamera() {
-        this.mCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 50000);
-        this.mCamera.position.set(300, 300, 300);
+        this.mCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 5000);
+        this.mCamera.position.set(30, 30, 30);
     }
 
     initScene() {
         this.mScene = new THREE.Scene();
         this.mScene.background = new THREE.Color(0xa0a0a0);
-        this.mScene.fog = new THREE.Fog(0xa0a0a0, 1000, 10000);
+        // this.mScene.fog = new THREE.Fog(0xa0a0a0, 100, 1000);
 
         this.mAxis = new THREE.AxesHelper(500);
         this.mAxis.material.visible = false;
@@ -66,17 +131,21 @@ class BugByDaylight {
 
         // 创建控件并绑定在相机上
         this.mOrbitControl = new THREE.OrbitControls(this.mCamera, this.mRenderer.domElement);
-        this.mOrbitControl.target = new THREE.Vector3(0, 100, 0);
+        this.mOrbitControl.target = new THREE.Vector3(0, 10, 0);
         this.mOrbitControl.autoRotate = false;
         this.mOrbitControl.minDistance = 1;
-        this.mOrbitControl.maxDistance = 3000;
+        this.mOrbitControl.maxDistance = 150;
         this.mOrbitControl.update();
         this.mOrbitControl.maxPolarAngle = Math.PI / 2;
 
-        this.mTextureLoader = new THREE.TextureLoader();
+        this.mLoadingManager = new THREE.LoadingManager();
+        this.mLoadingManager.onLoad = function () {
+            // call back function when the texture gets loaded
+        }
+        this.mTextureLoader = new THREE.TextureLoader(this.mLoadingManager);
 
         // skybox
-        var skyBoxGeo = new THREE.BoxGeometry(10000, 10000, 10000);
+        var skyBoxGeo = new THREE.BoxGeometry(1000, 1000, 1000);
         // const cubeTextureLoader = new THREE.CubeTextureLoader();
         // const skyBoxTexture = cubeTextureLoader.load([
         //     '/texture/SkyBox/posx.jpg', 
@@ -92,13 +161,13 @@ class BugByDaylight {
         var format = ".jpg";
         for (var i = 0; i < 6; i++)
             materialArray.push(new THREE.MeshBasicMaterial({
-                map: this.mTextureLoader.load(path + directions[i] + format, null, null),
+                map: this.mTextureLoader.load(path + directions[i] + format),
                 side: THREE.BackSide  // 设置镜像翻转
             }));
         const skyBoxMaterial = new THREE.MeshFaceMaterial(materialArray);
         this.mSkyBox = new THREE.Mesh(skyBoxGeo, skyBoxMaterial);
         this.mSkyBox.rotateY(-Math.PI / 2);
-        // this.mSkyBox.position.set(0, 5000, 0);
+        // this.mSkyBox.position.set(0, 500, 0);
         this.mScene.add(this.mSkyBox);
         // this.mScene.background = skyBoxTexture;
     }
@@ -108,12 +177,12 @@ class BugByDaylight {
         this.mScene.add(this.mAmbientLight);
 
         this.mDirectionalLight = new THREE.DirectionalLight(0x777777, 1.0);
-        this.mDirectionalLight.position.set(4000, 4000, 4000);
+        this.mDirectionalLight.position.set(400, 400, 400);
         this.mDirectionalLight.target.position.set(0, 0, 0);
         // this.mDirectionalLight.shadowCameraVisible = true;
         this.mDirectionalLight.castShadow = true;
         this.mDirectionalLight.shadow.camera.near = 0.5;
-        this.mDirectionalLight.shadow.camera.far = 50000;
+        this.mDirectionalLight.shadow.camera.far = 5000;
         this.mDirectionalLight.shadow.camera.top = 1800;
         this.mDirectionalLight.shadow.camera.bottom = -1000;
         this.mDirectionalLight.shadow.camera.left = -1200;
@@ -121,21 +190,20 @@ class BugByDaylight {
         this.mScene.add(this.mDirectionalLight);
 
         this.mSpotLight = new THREE.SpotLight(0xcccccc, 0.8);
-        this.mSpotLight.position.set(0, 750, -350);
+        this.mSpotLight.position.set(0, 75, -45);
         this.mSpotLight.angle = Math.PI / 6; // 设置聚光光源发散角度
         this.mSpotLight.castShadow = true;
         this.mSpotLight.receiveShadow = true;
         this.mSpotLight.shadow.camera.near = 0.5;
-        this.mSpotLight.shadow.camera.far = 2000;
+        this.mSpotLight.shadow.camera.far = 200;
         this.mSpotLight.shadow.camera.width = 1000;
         this.mSpotLight.shadow.camera.height = 1000;
         this.mScene.add(this.mSpotLight);
 
         // lens flare
-        var textureLoader = new THREE.TextureLoader();
-        var lensFlareTex0 = textureLoader.load("/texture/LensFlare/lensflare0.png");
-        var lensFlareTex2 = textureLoader.load("/texture/LensFlare/lensflare2.png");
-        var lensFlareTex3 = textureLoader.load("/texture/LensFlare/lensflare3.png");
+        var lensFlareTex0 = this.mTextureLoader.load("/texture/LensFlare/lensflare0.png");
+        var lensFlareTex2 = this.mTextureLoader.load("/texture/LensFlare/lensflare2.png");
+        var lensFlareTex3 = this.mTextureLoader.load("/texture/LensFlare/lensflare3.png");
         const flareColor = new THREE.Color(0xffffff);
         flareColor.setHSL(0.55, 0.9, 1.0);
         // need new version of Lensflare and three.js
@@ -179,170 +247,52 @@ class BugByDaylight {
             this.mScene.add(line);
         }
 
-        // plane
-        var planeGeo = new THREE.PlaneGeometry(50000, 50000);
-        var planeTexture = this.mTextureLoader.load('/texture/Terrain/grasslight-big.jpg');
-        planeTexture.wrapS = THREE.RepeatWrapping;
-        planeTexture.wrapT = THREE.RepeatWrapping;
-        planeTexture.repeat.set(100, 100);
-        var planeNormalTexture = this.mTextureLoader.load('/texture/Terrain/grasslight-big-nm.jpg');
-        planeNormalTexture.wrapS = THREE.RepeatWrapping;
-        planeNormalTexture.wrapT = THREE.RepeatWrapping;
-        planeNormalTexture.repeat.set(100, 100);
-        var planeMaterial = new THREE.MeshStandardMaterial({
-            map: planeTexture, 
-            normalMap: planeNormalTexture,
-            side: THREE.DoubleSide
-        }); 
-        var planeMesh = new THREE.Mesh(planeGeo, planeMaterial);
-        planeMesh.rotateX(-Math.PI / 2);
-        planeMesh.receiveShadow = true; // 接收阴影
-        this.mScene.add(planeMesh);
+        // // plane
+        // var planeGeo = new THREE.PlaneGeometry(5000, 5000);
+        // var planeTexture = this.mTextureLoader.load('/texture/Terrain/grasslight-big.jpg');
+        // planeTexture.wrapS = THREE.RepeatWrapping;
+        // planeTexture.wrapT = THREE.RepeatWrapping;
+        // planeTexture.repeat.set(100, 100);
+        // var planeNormalTexture = this.mTextureLoader.load('/texture/Terrain/grasslight-big-nm.jpg');
+        // planeNormalTexture.wrapS = THREE.RepeatWrapping;
+        // planeNormalTexture.wrapT = THREE.RepeatWrapping;
+        // planeNormalTexture.repeat.set(100, 100);
+        // var planeMaterial = new THREE.MeshStandardMaterial({
+        //     map: planeTexture, 
+        //     normalMap: planeNormalTexture,
+        //     side: THREE.DoubleSide
+        // }); 
+        // var planeMesh = new THREE.Mesh(planeGeo, planeMaterial);
+        // planeMesh.rotateX(-Math.PI / 2);
+        // planeMesh.receiveShadow = true; // 接收阴影
+        // this.mScene.add(planeMesh);
 
-        // // load OBJ
-        // var onProgress = function(xhr) {
-        //     if (xhr.lengthComputable) {
-        //         var percentComplete = xhr.loaded / xhr.total * 100;
-        //         console.log(Math.round(percentComplete, 2) + '% loading');
-        //     }
-        // };
-        // var onError = function(error) {
-        //     console.log('load error!' + error.getWebGLErrorMessage());
-        // };
-        // // PBR Material
-        // var pbrMaterial = new THREE.MeshPhysicalMaterial({
-        //     map: THREE.ImageUtils.loadTexture('/model/PBR_Safa/C501_1_1_lambert1_AlbedoTransparency.jpg', null, function(t){}), 
-        //     normalMap: this.mTextureLoader.load('/model/PBR_Safa/C501_1_1_lambert1_Normal.jpg'),
-        //     metalnessMap: this.mTextureLoader.load('/model/PBR_Safa/C501_1_1_lambert1_MetallicSmoothness.jpg')
-        // });
-        // // var mtlLoader = new THREE.MTLLoader();
-        // // mtlLoader.setPath('model/PBR_Safa/');
-        // // mtlLoader.load('shafa_obj.mtl', function(material) {
-        // //     material.preload();
-        // var objLoader = new THREE.OBJLoader();
-        // // objLoader.setMaterials(material);
-        // objLoader.setPath('model/PBR_Safa/');
-        // objLoader.load('shafa_obj.obj', function(object) {
-        //     object.traverse(function(child) {
-        //         if (child instanceof THREE.Mesh) {
-        //             child.material = pbrMaterial;
-        //             child.castShadow = true;
-        //             child.receiveShadow = true; // 接收阴影
-        //         }
-        //     });
-        //     object.position.x += 320;
-        //     self.mScene.add(object);
-        // }, onProgress, onError);
-        // // });
-
-        // // load FBX nurse
-        // var fbxLoader = new THREE.FBXLoader();
-        // fbxLoader.setCrossOrigin("Anonymous");
-        // fbxLoader.load("/model/zombienurse/zombienurse_Rig.FBX", function(object) {
-        //     self.mNurseAnimMixers = new THREE.AnimationMixer(object);
-        //     self.mNurseActions = [];
-
-        //     object.traverse(function(child) {
-        //         if (child.isMesh) {    //  instanceof THREE.Mesh
-        //             child.castShadow = true;
-        //             child.receiveShadow = true; // 接收阴影
-        //         }
-        //     });
-        //     self.mScene.add(object);
-        //     object.position.x -= 200;
-        //     console.log(object.animations.length);
-        //     self.mNurseAnimMixers.clipAction(object.animations[0]).play();
-
-        //     self.loadNextAnim(fbxLoader, '/model/zombienurse/', self.mNurseAnims, self.mNurseAnimMixers, self.mNurseActions);
-        // });
-
-        // // load FBX hyena 这个模型自带环境光会叠加上导致环境光太亮
-        // var hyenaLoader = new THREE.FBXLoader();
-        // hyenaLoader.setCrossOrigin("Anonymous");
-        // hyenaLoader.load("/model/hyena/hyena.FBX", function(object) {
-        //     self.mHyenaAnimMixers = new THREE.AnimationMixer(object);
-
-        //     object.traverse(function(child) {
-        //         if (child.isMesh) {    //  instanceof THREE.Mesh
-        //             child.castShadow = true;
-        //             child.receiveShadow = true; // 接收阴影
-        //         }
-        //     });
-        //     self.mScene.add(object);
-        //     object.position.x += 400;
-        //     object.rotateX(-Math.PI / 2);
-        //     console.log(object.animations.length);
-        //     self.mHyenaAnimMixers.clipAction(object.animations[0]).play();
-        // });
-
-        // // load FBX woman sophia
-        // var sophiaLoader = new THREE.FBXLoader();
-        // sophiaLoader.setCrossOrigin("Anonymous");
-        // sophiaLoader.load("/model/sophia/rp_sophia_animated_003_idling.fbx", function(object) {
-        //     self.mFbxSophiaMixers = new THREE.AnimationMixer(object);
-
-        //     object.traverse(function(child) {
-        //         if (child.isMesh) {    //  instanceof THREE.Mesh
-        //             child.castShadow = true;
-        //             child.receiveShadow = true; // 接收阴影
-        //         }
-        //     });
-        //     self.mScene.add(object);
-        //     object.position.x += 200;
-        //     object.rotateX(-Math.PI / 2);
-        //     console.log(object.animations.length);
-        //     self.mFbxSophiaMixers.clipAction(object.animations[0]).play();
-        // });
-
-        // // load dustbin FBX
-        // var dustbinPBRMaterial = new THREE.MeshPhysicalMaterial({
-        //     map: THREE.ImageUtils.loadTexture('/model/PBR_Dustbin/lajitong_Material _47_BaseColor.jpg', null, function(t){}),
-        //     metalness: 0.1, 
-        //     roughness: 0.2
-        // });
-        // var dustbinLoader = new THREE.FBXLoader();
-        // dustbinLoader.setCrossOrigin("Anonymous");
-        // dustbinLoader.load("/model/PBR_Dustbin/dustbin.fbx", function(object) {
-        //     object.traverse(function(child) {
-        //         if (child.isMesh) {    //  instanceof THREE.Mesh
-        //             child.material = dustbinPBRMaterial;
-        //             child.castShadow = true;
-        //             child.receiveShadow = true; // 接收阴影
-        //         }
-        //     });
-        //     object.position.x -= 220;
-        //     object.scale.x = 0.1;
-        //     object.scale.y = 0.1;
-        //     object.scale.z = 0.1;
-        //     self.mScene.add(object);
-        // });
-
-        // load xilou FBX
-        var xilouMaterials = [
-            new THREE.MeshPhysicalMaterial({
-                map: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m1_C.jpg', null, null), 
-                normalMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m1_N.jpg'),
-                metalnessMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m1_Ao.jpg'),
-                specularMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m1_S.tga')
-            }), 
-            new THREE.MeshPhysicalMaterial({
-                map: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m3_C.jpg', null, null), 
-                normalMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m3_N.jpg'),
-                metalnessMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m3_Ao.jpg'),
-                specularMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m3_S.tga')
-            }),
-            null,
-            new THREE.MeshPhysicalMaterial({
-                map: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m2_C.jpg', null, null), 
-                normalMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m2_N.jpg'),
-                metalnessMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m2_Ao.jpg'),
-                specularMap: this.mTextureLoader.load('/model/PBR_XiLou/XiLou_m2_S.tga')
-            })
-        ];
+        // // load xilou FBX
+        // var xilouMaterials = [
+        //     new THREE.MeshPhysicalMaterial({
+        //         map: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m1_C.jpg'), 
+        //         normalMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m1_N.jpg'),
+        //         metalnessMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m1_Ao.jpg'),
+        //         specularMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m1_S.tga')
+        //     }), 
+        //     new THREE.MeshPhysicalMaterial({
+        //         map: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m3_C.jpg'), 
+        //         normalMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m3_N.jpg'),
+        //         metalnessMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m3_Ao.jpg'),
+        //         specularMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m3_S.tga')
+        //     }),
+        //     null,
+        //     new THREE.MeshPhysicalMaterial({
+        //         map: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m2_C.jpg'), 
+        //         normalMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m2_N.jpg'),
+        //         metalnessMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m2_Ao.jpg'),
+        //         specularMap: this.mTextureLoader.load('/model/FBX/PBR_XiLou/XiLou_m2_S.tga')
+        //     })
+        // ];
 
         var xilouLoader = new THREE.FBXLoader();
         xilouLoader.setCrossOrigin("Anonymous");
-        xilouLoader.load("/model/PBR_XiLou/XiLou.fbx", function(object) {
+        xilouLoader.load("/model/FBX/PBR_XiLou/XiLou.fbx", function(object) {
             object.traverse(function(child) {
                 if (child.isMesh) {    //  instanceof THREE.Mesh
                     child.material = xilouMaterials;
@@ -350,7 +300,8 @@ class BugByDaylight {
                     child.receiveShadow = true; // 接收阴影
                 }
             });
-            object.position.z -= 700;
+            object.position.z -= 70;
+            object.scale.set(0.1, 0.1, 0.1)
             object.rotateY(-Math.PI / 2);
 
             self.mScene.add(object);
@@ -358,114 +309,124 @@ class BugByDaylight {
             self.render();
         })
 
+        // load mmd scene
+        this.mMmdSceneLoader = new THREE.MMDLoader();
+        this.loadMMDScene("/model/Scene/ancient_garden/stage.pmx", 1);
+
         // load mmd model
-        var fengminLoader = new THREE.MMDLoader();
-        this.mFengminAnimHelper = new THREE.MMDHelper();
-        var motionFiles = ["/motion/QianSiXiMotion.vmd"];
-        var cameraFiles = ["/motion/HongZhaoYuanCamera.vmd"];
-        var audioFile =    "/music/QianSiXi.mp3";
-        // fengminLoader.setCrossOrigin("Anonymous");
-        fengminLoader.load("/model/fengmin/Feng.pmx", motionFiles, function(object) {
+        this.mMmdLoader = new THREE.MMDLoader();
+        // this.mMmdLoader.setCrossOrigin("Anonymous");
+        this.loadMMD(this.mModelFiles[0], 1, this.mMotionFiles[0], this.mCameraFiles[0], this.mMusicFiles[0]);
+    }
+
+    loadMMDScene(path, scale) {
+        const self = this;
+        this.mMmdSceneLoader.load(path, null, function(object) {
             object.castShadow = true;
             object.receiveShadow = true;
 
-            self.mFengminAnimHelper.add(object);
-            self.mFengminAnimHelper.setAnimation(object);
+            self.mScene.add(object);
+            object.scale.set(scale, scale, scale);
+
+            self.render();
+        }, self.onProgress.bind(self), self.onError);
+    }
+
+    loadMMD(modelPath, scale, motionPath, cameraPath, musicPath) {
+        const self = this;
+        self.mAbortLoader = false;
+        self.mMMDAnimHelper = new THREE.MMDHelper();
+        self.mMmdLoaderRequest = this.mMmdLoader.load(modelPath, motionPath, function(object) {
+            object.castShadow = true;
+            object.receiveShadow = true;
+
+            self.mMMDAnimHelper.add(object);
+            self.mMMDAnimHelper.setAnimation(object);
+            self.mLastModel = object
+            self.mMMDModelReady = true
 
             // 骨骼辅助显示
-            var ikHelper = new THREE.CCDIKHelper(object);
-            ikHelper.visible = false;
-            self.mScene.add(ikHelper);
+            self.mIkHelper = new THREE.CCDIKHelper(object);
+            self.mIkHelper.visible = false;
+            self.mScene.add(self.mIkHelper);
 
             // 物理刚体辅助显示
-            self.mFengminAnimHelper.setPhysics(object);
+            self.mMMDAnimHelper.setPhysics(object);
             self.mPhysicsHelper = new THREE.MMDPhysicsHelper(object);
-            self.mPhysicsHelper.visible = true;
+            self.mPhysicsHelper.visible = false;
             self.mScene.add(self.mPhysicsHelper);
             self.render();
 
-            fengminLoader.loadVmds(cameraFiles, function (vmd) {
-                fengminLoader.pourVmdIntoCamera(self.mCamera, vmd);
-                fengminLoader.loadAudio(audioFile, function (audio, listener) {
+            self.mMmdLoader.loadVmds(cameraPath, function (vmd) {
+                self.mMMDAnimHelper.setCamera(self.mCamera);
+                self.mMmdLoader.pourVmdIntoCamera(self.mCamera, vmd);
+                self.mMMDAnimHelper.setCameraAnimation(self.mCamera);
+                self.mMMDAnimHelper.doCameraAnimation = self.mAutoCamera;
+                self.mMmdLoader.loadAudio(musicPath, function (audio, listener) {
                     var audioParams ={delayTime: 0};
-                    self.mFengminAnimHelper.setAudio(audio, listener, audioParams);
-                    // 该函数作用:查找摄像机 音频 动作数据 模块 中最长的时间 当到达最最长时间 所有都停止 如果未设置 则模块到达自己结束时间停止 不会同步
-                    self.mFengminAnimHelper.unifyAnimationDuration();
+                    self.mMMDAnimHelper.setAudio(audio, listener, audioParams);
+                    // 该函数作用:查找摄像机 音频 动作数据 模块 中最长的时间 当到达最最长时间 
+                    // 所有都停止 如果未设置 则模块到达自己结束时间停止 不会同步
+                    self.mMMDAnimHelper.unifyAnimationDuration();
                     
-                    self.mFengminReady = true;
+                    self.mMMDReady = true;
                     self.mContinuous = true;
                     self.render();
-                }, self.onProgress, self.onError);
-            }, self.onProgress, self.onError);
+                }, self.onProgress.bind(self), self.onError);
+            }, self.onProgress.bind(self), self.onError);
 
             self.mScene.add(object);
-            object.scale.set(10, 10, 10)
-        }, self.onProgress, self.onError);
-
-        // // load J-15 material
-        // var j15PBRMaterial = new THREE.MeshPhysicalMaterial({
-        //     map: THREE.ImageUtils.loadTexture('/model/J-15/mat0_c.jpg', null, function(t){}), 
-        //     emissive:0x111111,
-        //     normalMap: this.mTextureLoader.load('/model/J-15/mat0_n.jpg'),
-        //     metalnessMap: this.mTextureLoader.load('/model/J-15/mat0_g.jpg'), 
-        //     roughnessMap: this.mTextureLoader.load('/model/J-15/mat0_r.jpg'), 
-        //     emissiveMap: this.mTextureLoader.load('/model/J-15/mat0_s.jpg')
-        // });
-        // objLoader.setPath('model/J-15/');
-        // objLoader.load('J-15.obj', function(object) {
-        //     object.traverse(function(child) {
-        //         if (child instanceof THREE.Mesh) {
-        //             child.material = j15PBRMaterial;
-        //             child.castShadow = true;
-        //             child.receiveShadow = true; // 接收阴影
-        //         }
-        //     });
-        //     object.scale.set(50, 50, 50)
-        //     self.mScene.add(object);
-        // }, onProgress, onError);
+            object.scale.set(scale, scale, scale);
+        }, self.onProgress.bind(self), self.onError);
+        // self.mMmdLoaderRequest.onabort = function () {
+        //     alert("testOnAbort");
+        //     self.mAbortLoader = false;
+        //     self.loadMMD(self.mModelFiles[self.mLastModelIndex], 1, this.mMotionFiles[self.mLastMotionIndex], 
+        //         this.mCameraFiles[self.mLastMotionIndex], this.mMusicFiles[self.mLastMotionIndex]);
+        // }
     }
 
-    loadNextAnim(loader, rootPath, names, mixers, actions) {
+    motionSelect(motion) {
         const self = this;
-        const anim = names.pop();
-    
-        loader.load(rootPath + anim + '.FBX', function (object) {
-            const action = mixers.clipAction(object.animations[0]);
-            actions.push(action);
-    
-            object.traverse(function (child) {
-                if (child.isMesh) {
-                    child.castShadow = true;
-                    child.receiveShadow = false;
-                }
-            });
-            // self.mScene.add(object); // do not add repeat
-            
-            if (names.length > 0) {
-                self.loadNextAnim(loader, rootPath, names, mixers, actions);
-            } else {
-                self.playAnimation(0);
-                self.render();
-            }
-        } );
+        self.mAbortLoader = true;
+        if (undefined != self.mPhysicsHelper)
+            self.mScene.remove(self.mPhysicsHelper);
+        if (undefined != self.mLastModel)
+            self.mScene.remove(self.mLastModel);
+        if (null != self.mMMDAnimHelper && null != self.mMMDAnimHelper.audioManager 
+            && null != self.mMMDAnimHelper.audioManager.audio)
+            self.mMMDAnimHelper.audioManager.audio.stop();
+        self.mMMDAnimHelper = null;
+
+        self.mLastMotionIndex = motion;
+        self.mMMDReady = false;
+        self.mContinuous = false;
+        // if (motion == self.COFFIN_DANCE_INDEX) {
+        //     for (var i = 0; i < self.mModelForCoffinDanceFiles.length; i++) {
+        //         self.loadMMD(self.mModelForCoffinDanceFiles[i], 1, self.mMotionForCoffinDanceFiles[i], null, null);
+        //     }
+        // }
+        self.loadMMD(self.mModelFiles[self.mLastModelIndex], 1, self.mMotionFiles[motion], 
+            self.mCameraFiles[motion], self.mMusicFiles[motion]);
     }
 
-    stopAnimation() {
-        if (null != this.mNurseAnimMixers) 
-            this.mNurseAnimMixers.stopAllAction();
-        if (null != this.mHyenaAnimMixers)
-            this.mHyenaAnimMixers.stopAllAction();
-    }
-    
-    playAnimation(index) {
-        if (null != this.mNurseAnimMixers) 
-            this.mNurseAnimMixers.stopAllAction();
-        if (null != this.mNurseActions) {
-            const action1 = this.mNurseActions[index];
-            action1.weight = 1;
-            action1.fadeIn(0.5);
-            action1.play();
-        }
+    characterSelect(character) {
+        const self = this;
+        self.mAbortLoader = true;
+        if (undefined != self.mPhysicsHelper)
+            self.mScene.remove(self.mPhysicsHelper);
+        if (undefined != self.mLastModel)
+            self.mScene.remove(self.mLastModel);
+        if (null != self.mMMDAnimHelper && null != self.mMMDAnimHelper.audioManager 
+            && null != self.mMMDAnimHelper.audioManager.audio)
+            self.mMMDAnimHelper.audioManager.audio.stop();
+        self.mMMDAnimHelper = null;
+
+        self.mLastModelIndex = character;
+        self.mMMDReady = false;
+        self.mContinuous = false;
+        self.loadMMD(self.mModelFiles[character], 1, this.mMotionFiles[self.mLastMotionIndex], 
+            this.mCameraFiles[self.mLastMotionIndex], this.mMusicFiles[self.mLastMotionIndex]);
     }
 
     render() {
@@ -473,19 +434,9 @@ class BugByDaylight {
 
         this.mRenderer.clear();
         this.mRenderer.render(this.mScene, this.mCamera);
-        
-        if (null != this.mNurseAnimMixers) {
-            this.mNurseAnimMixers.update(delta);
-        }
-        if (null != this.mFbxSophiaMixers) {
-            this.mFbxSophiaMixers.update(delta);
-        }
-        if (null != this.mHyenaAnimMixers) {
-            this.mHyenaAnimMixers.update(delta);
-        }
 
-        if (null != this.mFengminAnimHelper && this.mFengminReady) {
-            this.mFengminAnimHelper.animate(delta);
+        if (null != this.mMMDAnimHelper && this.mMMDReady) {
+            this.mMMDAnimHelper.animate(delta);
         }
         if (this.mPhysicsHelper != undefined && this.mPhysicsHelper.visible) 
             this.mPhysicsHelper.update();
@@ -503,11 +454,21 @@ class BugByDaylight {
 
     onError(xhr) {
         var url = decodeURI(xhr.target.responseURL);
-        fileName = url.substr(url.lastIndexOf("/") + 1) 
-        console.log("加载失败" + "\n" + "失败地址：" + fileName);
+        if (undefined != url && -1 != url.indexOf("/")) {
+            fileName = url.substr(url.lastIndexOf("/") + 1) 
+            console.log("加载失败" + "\n" + "失败地址：" + fileName);
+        }
     }
 
     onProgress(xhr) {
+        // if (null == xhr.currentTarget.onabort) {
+        //     xhr.currentTarget.onabort = function() {
+        //         alert("testXhrOnAbort");
+        //     }
+        // }
+        if (this.mAbortLoader) {
+            xhr.currentTarget.abort();
+        }
         var url = decodeURI(xhr.target.responseURL);
         var fileName = url.substr(url.lastIndexOf("/") + 1);
         var fileType = url.substr(url.lastIndexOf(".") + 1);
@@ -519,7 +480,13 @@ class BugByDaylight {
                 fileType = "动作文件";
                 break;
             case "tga":
-                fileType = "tga文件";
+                fileType = "贴图文件";
+                break;
+            case "png":
+                fileType = "贴图文件";
+                break;
+            case "jpg":
+                fileType = "贴图文件";
                 break;
             case "mp3":
                 fileType = "音频文件";
@@ -533,18 +500,24 @@ class BugByDaylight {
 
         if (xhr.lengthComputable) {
             if (xhr.loaded == xhr.total) {
-                $("#progressBar").attr("class","progress-bar progress-bar-success");
+                // $("#progressBar").attr("class","progress-bar progress-bar-success");
                 console.log(fileType+": " + fileName + "加载完成");
-                $("#progressTitle").html("");
-                if (fileType == "音频文件")
-                    console.log("所有文件已加载" + "</br>" + "处理文件中...");   
+                // $("#progressTitle").html("");
+                if (fileType == "音频文件") {
+                    // $("#progressTitle").html("当前音乐：" + fileName);
+                    console.log("所有文件已加载" + "</br>" + "处理文件中...");
+                    document.getElementById('text-progress').innerHTML = "加载完成";
+                }
             } else {
+                // var percentComplete = Math.round((xhr.loaded / xhr.total * 100), 2);
+                // var progressBarStyleValue = percentComplete + "%";
+                // $("#progressTitle").html(fileType + ": " + fileName + "已加载 " + progressBarStyleValue 
+                //     + '<span class="glyphicon glyphicon-arrow-down" style="color: rgb(0, 255, 255); font-size: 15px;"></span>');
+                // $("#progressBar").attr("style", "width:" + progressBarStyleValue + ";");
+                // $("#progressBar").attr("class", "progress-bar progress-bar-info") 
                 var percentComplete = Math.round((xhr.loaded / xhr.total * 100), 2);
-                var progressBarStyleValue = percentComplete + "%";
-                $("#progressTitle").html(fileType + ": " + fileName + "已加载 " + progressBarStyleValue 
-                    + '<span class="glyphicon glyphicon-arrow-down" style="color: rgb(0, 255, 255); font-size: 15px;"></span>');
-                $("#progressBar").attr("style", "width:" + progressBarStyleValue + ";");
-                $("#progressBar").attr("class", "progress-bar progress-bar-info") 
+                document.getElementById('text-progress').innerHTML = fileType + ": " + percentComplete + '%';
+                bar.style.width = percentComplete + '%'
             }
         } else {
             console.log(fileType+":" + fileName + "加载未进行，请检查网络");
@@ -558,35 +531,56 @@ class BugByDaylight {
     }
 
     onKeyPress(event) {
-        // var key;
-        // if (navigator.appName == "Netscape") {
-        //     key = String.fromCharCode(event.charCode);
-        // } else {
-        //     key = String.fromCharCode(event.keyCode);
-        // }
-        // switch (key) {
-        //     case 'G':
-        //     case 'g':
-        //         this.mShowAssist = !this.mShowAssist;
-        //         this.mMeshLineMaterial.visible = this.mShowAssist;
-        //         this.mAxis.material.visible = this.mShowAssist;
-        //         break;
-        //     case '1':
-                    // playAnimation(1);
-        //     case '2':
-        //         playAnimation(2);
-        //     case '3':
-        //         playAnimation(3);
-        //     case '4':
-        //         playAnimation(4);
-        //     default:
-        //         break;
-        // }
-        // if (this.mShowAssist) {
-        //     document.getElementById('canvas-frame').appendChild(this.mStats.domElement);
-        // } else {
-        //     document.getElementById('canvas-frame').removeChild(this.mStats.domElement);
-        // }
+        var key;
+        if (navigator.appName == "Netscape") {
+            key = String.fromCharCode(event.charCode);
+        } else {
+            key = String.fromCharCode(event.keyCode);
+        }
+        switch (key) {
+            case 'G':
+            case 'g':
+                this.mShowAssist = !this.mShowAssist;
+                this.mMeshLineMaterial.visible = this.mShowAssist;
+                this.mAxis.material.visible = this.mShowAssist;
+                document.getElementById("debug_switch").checked = this.mShowAssist;
+                this.onDebugStatusChanged();
+                break;
+            case 'C':
+            case 'c':
+                this.mAutoCamera = !this.mAutoCamera;
+                document.getElementById("auto_camera_switch").checked = this.mAutoCamera;
+                this.onAutoCameraStatusChanged();
+                break;
+            default:
+                break;
+        }
+    }
+
+    updateAutoCameraStatus(checked) {
+        this.mAutoCamera = checked;
+        this.onAutoCameraStatusChanged();
+    }
+
+    onAutoCameraStatusChanged() {
+        this.mMMDAnimHelper.doCameraAnimation = this.mAutoCamera;
+    }
+
+    updateDebugStatus(checked) {
+        this.mShowAssist = checked;
+        this.mMeshLineMaterial.visible = checked;
+        this.mAxis.material.visible = checked;
+        this.onDebugStatusChanged();
+    }
+
+    onDebugStatusChanged() {
+        if (this.mShowAssist) {
+            this.mContainer.appendChild(this.mStats.domElement);
+        } else {
+            this.mContainer.removeChild(this.mStats.domElement);
+        }
+        this.mPhysicsHelper.visible = this.mShowAssist;
+        this.mIkHelper.visible = this.mShowAssist;
     }
 }
 
