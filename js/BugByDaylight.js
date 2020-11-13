@@ -1,38 +1,118 @@
 class BugByDaylight {
     constructor() {
         this.COFFIN_DANCE_INDEX = 10;
-        this.mClock = new THREE.Clock();
-        this.mModelFiles = [
-            // 黎明Bug
-            "/model/DBD/fengmin/Feng.pmx", "/model/DBD/meg/meg.pmx", "/model/DBD/huntress/Huntress.pmx", 
-            "/model/DBD/amanda/Amanda.pmx", 
+        this.mClock = undefined;
+        this.mModelGames = [
+            "游戏类型", "黎明杀🐔", "生化危机", "最终幻想", "铁拳", "绝地求生", "漫威", "古墓丽影", "模拟人生", "卡通人物", "死或生", "银河战士", "X-战警", "星际争霸"
+        ];
+        this.mModelNameFiles = [
+            // Test
+            ["默认角色"],
+            // Dead by Bug
+            ["凤敏", "梅格·托马斯", "🐰妈", "🐷妹（电锯惊魂）", "鬼面（惊声尖叫）", "佛莱迪（猛鬼街）","迈克尔·迈尔斯（月光光心慌慌）", "皮脸（德州电锯杀人狂）"], 
             // 卡婊危机
-            "/model/RE/jill1/Jill.pmx", "/model/RE/jill3/JillRE3remake.pmx", "/model/RE/jill5/Jill.pmx", 
-            "/model/RE/claire/ClaireCasual.pmx", "/model/RE/helena/Helena_TallOaks.pmx", "/model/RE/sherry/Sherry.pmx", 
-            "/model/RE/ada/Ada.pmx", "/model/RE/Rebecca/Rebecca_Chambers.pmx", 
+            ["吉尔-生化危机1", "吉尔-生化危机3重置版", "吉尔-生化危机5", "克莱尔（便装）", "Helena-生化危机6", "雪梨-生化危机6", 
+            "挨打·王-生化危机4", "Rebecca-生化危机0", "Vector-浣熊市行动", "汉克（生化危机2）", "Iron_Maiden(生化危机4)"], 
             // 最终幻想
-            "/model/FF/Tifa/Tifa.pmx", "/model/FF/yuna/pmx/yuna.pmx", 
+            ["蒂法（旗袍）", "尤娜（婚纱）"], 
             // 铁拳
-            "/model/Tekken/Miharu_Hirano/Miharu_Hirano.pmx", 
+            ["Miharu_Hirano"], 
             // 绝地求生
-            "/model/PUBG/PUGB_Male/Male.pmx", "/model/PUBG/PUBG_Female_Base/Female.pmx", "/model/PUBG/CF_Suzy_Miss_A/Suzy_Brown.pmx", 
-            "/model/PUBG/CSO2_707/707.pmx", "/model/PUBG/FEAROnline_Benedict/Benedict.pmx", 
+            ["吃鸡男", "吃鸡女(Base)", "吃鸡女(Avatar01)", "Suzy_Brown", "707", "Benedict"], 
             // 漫威
-            "/model/Marvel/Ironman/Ironman.pmx", "/model/Marvel/Black_Widow_FF/FF.pmx", "/model/Marvel/Black_Widow_Team_Suit/Team-Suit.pmx",
-            "/model/Marvel/Supergirl/Hitomi_Supergirl.pmx", "/model/Marvel/Doctor_Strange/Doctor_Strange.pmx", "/model/Marvel/Antman/Antman.pmx",
-            "/model/Marvel/Superman/Superman.pmx",
+            ["钢铁侠", "黑寡妇", "黑寡妇（团队装）",
+            "Hitomi_Supergirl", "奇异博士", "蚁人",
+            "超人", "奥创"],
             // 古墓丽影
-            "/model/TR/Lara_Croft/Lara_Croft.pmx",
+            ["劳拉"],
             // Sim4
-            "/model/Sim/Petra/Petra.pmx",
+            ["Petra"],
             // 动画
-            "/model/Cartoon/Alice/Alice.pmx", "/model/Cartoon/Athena/Athena.pmx", "/model/Cartoon/Reisalin_Stout/Reisalin_Stout_Black.pmx", 
-            "/model/Cartoon/Helen_Parr/Mrs_Incredible.pmx", "/model/Cartoon/Sly_Cooper/Sly_Cooper.pmx", "/model/Cartoon/Lisbeth/Lisbeth.pmx", 
+            ["Alice", "Athena", "Reisalin_Stout_Black", 
+            "弹力女侠", "Sly_Cooper", "Lisbeth"], 
             // DOA 6
-            "/model/DOA/Leifang/Leifang.pmx", "/model/DOA/Luna_Pomelo/Luna_Pomelo.pmx", "/model/DOA/Honoka/honoka_c13.pmx", 
-            "/model/DOA/Honoka_Stu/honoka_c1.pmx", 
+            ["雷芳", 
+            "Luna_Pomelo", 
+            // 穂乃果
+            "honoka（牛仔1）", "honoka（牛仔2）", "honoka（牛仔3）", "honoka_c1", 
+            // 玛丽·螺丝
+            "Marie_Rose（otaku）", "Marie_Rose（旗袍）", "Marie_Rose",
+            "Marie_Rose（粉旗袍）", "Marie_Rose（背带）", "Marie_Rose（圣诞）",
+            // 霞
+            "Kasumi_Furisode(霞)", "Kasumi_Furisode(和服)", "Kasumi_Casual_Ponytail(牛仔马尾)", "Kasumi_Casual_Long_Hair(牛仔长发)", "Kasumi_Overall()", 
+            // 不知火舞
+            "Mai_Shiranui", 
+            // 红叶
+            "Momiji_Santa(红叶)", "Momiji_Santa(警服)", "Momiji_Santa(啦啦队)", 
+            // 绫音
+            "Ayane_SwimSuit(绫音)", "Ayane_SwimSuit(泳装)", "Ayane(皮衣)", "Ayane(和服)",
+            // 八田美咲
+            "Misaki(和服)",
+            // 环
+            "Tamaki(环)", "Tamaki(浴袍)",
+            ],
+            // Metroid 银河战士
+            ["萨姆丝·阿兰(便服)", "萨姆丝·阿兰"],
+            // X战警
+            ["金刚狼(夹克)"]
+        ];
+        this.mModelFiles = [
+            // Test
+            ["/model/DOA/Honoka/honoka_c13_Alt2.pmx"],
+            // Dead by Bug
+            ["/model/DBD/fengmin/Feng.pmx", "/model/DBD/meg/meg.pmx", "/model/DBD/huntress/Huntress.pmx", 
+            "/model/DBD/amanda/Amanda.pmx", "/model/DBD/Ghostface/ghostface.pmx", "/model/DBD/Freddy/Freddy.pmx", 
+            "/model/DBD/MichealMyers/MichealMyers.pmx", "/model/DBD/Leatherface/Leatherface.pmx"], 
+            // 卡婊危机
+            ["/model/RE/jill1/Jill.pmx", "/model/RE/jill3/JillRE3remake.pmx", "/model/RE/jill5/Jill.pmx", 
+            "/model/RE/claire/ClaireCasual.pmx", "/model/RE/helena/Helena_TallOaks.pmx", "/model/RE/sherry/Sherry.pmx", 
+            "/model/RE/ada/Ada.pmx", "/model/RE/Rebecca/Rebecca_Chambers.pmx", "/model/RE/vector/Vector.pmd", 
+            "/model/RE/RE2_Remake_Hunk/RE2_Remake_Hunk.pmx", "/model/RE/RE4_Iron_Maiden/RE4_Iron_Maiden.pmx"], 
+            // 最终幻想
+            ["/model/FF/Tifa/Tifa.pmx", "/model/FF/yuna/pmx/yuna.pmx"], 
+            // 铁拳
+            ["/model/Tekken/Miharu_Hirano/Miharu_Hirano.pmx"], 
+            // 绝地求生
+            ["/model/PUBG/PUGB_Male/Male.pmx", "/model/PUBG/PUBG_Female_Base/Female.pmx", "/model/PUBG/PUBG_F_Avatar01/F_Avatar_01.pmx",
+            "/model/PUBG/CF_Suzy_Miss_A/Suzy_Brown.pmx", "/model/PUBG/CSO2_707/707.pmx", "/model/PUBG/FEAROnline_Benedict/Benedict.pmx"], 
+            // 漫威
+            ["/model/Marvel/Ironman/Ironman.pmx", "/model/Marvel/Black_Widow_FF/FF.pmx", "/model/Marvel/Black_Widow_Team_Suit/Team-Suit.pmx",
+            "/model/Marvel/Supergirl/Hitomi_Supergirl.pmx", "/model/Marvel/Doctor_Strange/Doctor_Strange.pmx", "/model/Marvel/Antman/Antman.pmx",
+            "/model/Marvel/Superman/Superman.pmx", "/model/Marvel/Ultron/Marvel_Ultron.pmx"],
+            // 古墓丽影
+            ["/model/TR/Lara_Croft/Lara_Croft.pmx"],
+            // Sim4
+            ["/model/Sim/Petra/Petra.pmx"],
+            // 动画
+            ["/model/Cartoon/Alice/Alice.pmx", "/model/Cartoon/Athena/Athena.pmx", "/model/Cartoon/Reisalin_Stout/Reisalin_Stout_Black.pmx", 
+            "/model/Cartoon/Helen_Parr/Mrs_Incredible.pmx", "/model/Cartoon/Sly_Cooper/Sly_Cooper.pmx", "/model/Cartoon/Lisbeth/Lisbeth.pmx"], 
+            // DOA 6
+            ["/model/DOA/Leifang/Leifang.pmx", 
+            "/model/DOA/Luna_Pomelo/Luna_Pomelo.pmx", 
+            // DOA 穂乃果
+            "/model/DOA/Honoka/honoka_c13.pmx", "/model/DOA/Honoka/honoka_c13_Alt2.pmx", "/model/DOA/Honoka/honoka_c13_Alt3.pmx", "/model/DOA/Honoka_Stu/honoka_c1.pmx", 
+            // DOA 玛丽·螺丝
             "/model/DOA/Marie/Marie_Rose_otaku.pmx", "/model/DOA/Marie_Rose_C/Marie_Rose_C.pmx", "/model/DOA/Marie_Rose/Marie_Rose.pmx",
-            "/model/DOA/Kasumi_Furisode/Kasumi_Furisode.pmx", "/model/DOA/Mai_Shiranui/Mai_Shiranui.pmx", "/model/DOA/Momiji_Santa/Momiji_Santa.pmx",
+            "/model/DOA/Marie_Rose_CP/Marie_Chinese_Dress.pmx", "/model/DOA/Marie_Rose_Jeans/MarieRose_Overalls.pmx", "/model/DOA/Marie_Rose_Fraise_Noel/Marie.pmx",
+            // 霞
+            "/model/DOA/Kasumi/Kasumi.pmx", "/model/DOA/Kasumi_Furisode/Kasumi_Furisode.pmx", "/model/DOA/Kasumi_Casual/Kasumi_Casual_Ponytail.pmx", 
+            "/model/DOA/Kasumi_Casual/Kasumi_Casual_Long_Hair.pmx", "/model/DOA/Kasumi_Overall/Kasumi_Overall.pmx", 
+            // 不知火舞
+            "/model/DOA/Mai_Shiranui/Mai_Shiranui.pmx", 
+            // 红叶
+            "/model/DOA/Momiji_Santa/Momiji_Santa.pmx", "/model/DOA/Momiji_Cheerleader/Momiji_Cheerleader.pmx", "/model/DOA/Momiji_Cop/Momiji.pmx", 
+            // 绫音
+            "/model/DOA/Ayane/Ayane.pmx", "/model/DOA/Ayane_c19_seaside_eden_swimsuit/Ayane_Seaside_Eden_Swimsuit.pmx","/model/DOA/Ayane_FF5/Ayane_FF5.pmx", 
+            "/model/DOA/Ayane_Furisode_Kimono_Twilight_Butterfly/Ayane_Furisode_Kimono_Twilight_Butterfly.pmx",
+            // 八田美咲
+            "/model/DOA/Misaki_Furisode_Kimono_Morning_Star/Misaki_Furisode_Kimono_Morning_Star.pmx", 
+            // 环
+            "/model/DOA/Tamaki_Mona_Costume/Tamaki_Mona_Costume.pmx", "/model/DOA/Tamaki_Indigo_Peacock/Tamaki_Indigo_Peacock.pmx", 
+            ],
+            // Metroid 银河战士
+            ["/model/Metroid/SamusAran/Samus_Casual.pmd", "/model/Metroid/SamusAran/ZeroSuitSamus.pmd"], 
+            // X战警
+            ["/model/X-Men/Wolverine_Logan_Jacket_Outfit/Wolverine_Jacket.pmx"]
         ];
         this.mModelForCoffinDanceFiles = [
             "/model/DBD/Ghostface/ghostface.pmx", "/model/DBD/Leatherface/Leatherface.pmx", "/model/DBD/MichealMyers/MichealMyers.pmx", 
@@ -43,34 +123,52 @@ class BugByDaylight {
             ["/motion/CoffinDance/MAN4.vmd"], 
         ]
         this.mMotionFiles = [
-            ["/motion/LuoHuaQinMotion.vmd"], ["/motion/QianSiXiMotion.vmd"], 
-            ["/motion/HongZhaoYuanMotion.vmd"], ["/motion/ZuiLinMotion.vmd"], 
-            ["/motion/LianRenXinMotion.vmd"], 
-            ["/motion/LearnCatMotion.vmd"], ["/motion/HaiCaoMotion.vmd"], 
-            ["/motion/LittleAppleMotion.vmd"], 
-            ["/motion/BarBarBarMotion3.vmd"], ["/motion/WhatYouWaitingForMotion.vmd"], 
-            ["/motion/CoffinDance/CORONA-CHAN.vmd"]
+            // ancient
+            ["/motion/Ancient/LuoHuaQinMotion.vmd"], ["/motion/Ancient//QianSiXiMotion.vmd"], 
+            ["/motion/Ancient/HongZhaoYuanMotion.vmd"], ["/motion/Ancient/ZuiLinMotion.vmd"], 
+            ["/motion/Ancient/LianRenXinMotion.vmd"],
+            // Popular
+            ["/motion/Popular/LearnCatMotion.vmd"], ["/motion/Popular/HaiCaoMotion.vmd"], 
+            ["/motion/Popular/LittleAppleMotion.vmd"], 
+            // Jp&Korea
+            ["/motion/JP&Korea/BarBarBarMotion3.vmd"], ["/motion/JP&Korea/WhatYouWaitingForMotion.vmd"], 
+            // Funny
+            ["/motion/Funny/CoffinDance/CORONA-CHAN.vmd"], ["/motion/Funny/MaBaoguo/MaBaoguo.vmd"]
+        ];
+        this.mSceneFiles = [
+            "/model/Scene/ancient_garden/stage.pmx", "/model/Scene/chinese_night/merge.pmx", "/model/Scene/Girl's_Room/Girl's_Room.pmx"
         ];
         this.mCameraFiles = [
-            ["/motion/LuoHuaQinCamera.vmd"], ["/motion/QianSiXiCamera.vmd"], 
-            ["/motion/HongZhaoYuanCamera.vmd"], , ["/motion/ZuiLinCamera.vmd"], 
-            ["/motion/LianRenXinCamera.vmd"],
-            ["/motion/LearnCatCamera.vmd"], ["/motion/JiLeCamera.vmd"], 
-            ["/motion/LittleAppleCamera.vmd"], 
-            ["/motion/BarBarBarCamera.vmd"], ["/motion/WhatYouWaitingForCamera.vmd"], 
-            ["/motion/CoffinDance/CAMERA.vmd"]
+            // ancient
+            ["/motion/Ancient/LuoHuaQinCamera.vmd"], ["/motion/Ancient/QianSiXiCamera.vmd"], 
+            ["/motion/Ancient/HongZhaoYuanCamera.vmd"], , ["/motion/Ancient/ZuiLinCamera.vmd"], 
+            ["/motion/Ancient/LianRenXinCamera.vmd"],
+            // Popular
+            ["/motion/Popular/LearnCatCamera.vmd"], ["/motion/Popular/JiLeCamera.vmd"], 
+            ["/motion/Popular/LittleAppleCamera.vmd"], 
+            // Jp&Korea
+            ["/motion/JP&Korea/BarBarBarCamera.vmd"], ["/motion/JP&Korea/WhatYouWaitingForCamera.vmd"], 
+            // Funny
+            ["/motion/Funny/CoffinDance/CAMERA.vmd"], ["/motion/Funny/MaBaoguo/MaBaoguoCamera.vmd"]
         ];
         this.mMusicFiles = [
+            // ancient
             "/music/LuoHuaQin.mp3", "/music/QianSiXi.mp3", "/music/HongZhaoYuan.mp3", 
             "/music/ZuiLin.mp3", "/music/LianRenXin.mp3", 
+            // Popular
             "/music/LearnCatCut.mp3", "/music/HaiCaoCut.mp3", "/music/LittleApple.mp3", 
-            "/music/BarBarBar.mp3", "/music/WaitingFor.mp3", "/music/CoffinDance.wav"
+            // Jp&Korea
+            "/music/BarBarBar.mp3", "/music/WaitingFor.mp3", 
+            // Funny
+            "/music/CoffinDance.mp3", "/music/MaBaoguo.mp3"
         ];
         this.mDebug = false;
         this.mAutoCamera = true;
         this.mAbortLoader = false;
+        this.mLastGameIndex = 0;
         this.mLastModelIndex = 0;
         this.mLastMotionIndex = 0;
+        this.mLastSceneIndex = 0;
 
 		this.init();
     }
@@ -117,7 +215,7 @@ class BugByDaylight {
 
     initCamera() {
         this.mCamera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 5000);
-        this.mCamera.position.set(30, 30, 30);
+        this.mCamera.position.set(0, 20, 50);
     }
 
     initScene() {
@@ -311,17 +409,18 @@ class BugByDaylight {
 
         // load mmd scene
         this.mMmdSceneLoader = new THREE.MMDLoader();
-        this.loadMMDScene("/model/Scene/ancient_garden/stage.pmx", 1);
+        this.loadMMDScene(this.mSceneFiles[0], 1);
 
         // load mmd model
         this.mMmdLoader = new THREE.MMDLoader();
         // this.mMmdLoader.setCrossOrigin("Anonymous");
-        this.loadMMD(this.mModelFiles[0], 1, this.mMotionFiles[0], this.mCameraFiles[0], this.mMusicFiles[0]);
+        this.loadMMD(this.mModelFiles[0][0], 1, this.mMotionFiles[0], this.mCameraFiles[0], this.mMusicFiles[0]);
     }
 
     loadMMDScene(path, scale) {
         const self = this;
         this.mMmdSceneLoader.load(path, null, function(object) {
+            self.mLastScene = object;
             object.castShadow = true;
             object.receiveShadow = true;
 
@@ -334,6 +433,9 @@ class BugByDaylight {
 
     loadMMD(modelPath, scale, motionPath, cameraPath, musicPath) {
         const self = this;
+        if (null == self.mCamera) {
+            self.initCamera();  // have to reinit camera since pourVmdIntoCamera
+        }
         self.mAbortLoader = false;
         self.mMMDAnimHelper = new THREE.MMDHelper();
         self.mMmdLoaderRequest = this.mMmdLoader.load(modelPath, motionPath, function(object) {
@@ -342,8 +444,7 @@ class BugByDaylight {
 
             self.mMMDAnimHelper.add(object);
             self.mMMDAnimHelper.setAnimation(object);
-            self.mLastModel = object
-            self.mMMDModelReady = true
+            self.mLastModel = object;
 
             // 骨骼辅助显示
             self.mIkHelper = new THREE.CCDIKHelper(object);
@@ -389,10 +490,14 @@ class BugByDaylight {
     motionSelect(motion) {
         const self = this;
         self.mAbortLoader = true;
-        if (undefined != self.mPhysicsHelper)
+        if (undefined != self.mPhysicsHelper) {
+            self.deleteGroup(self.mPhysicsHelper);
             self.mScene.remove(self.mPhysicsHelper);
-        if (undefined != self.mLastModel)
+        }
+        if (undefined != self.mLastModel) {
+            self.deleteGroup(self.mLastModel);
             self.mScene.remove(self.mLastModel);
+        }
         if (null != self.mMMDAnimHelper && null != self.mMMDAnimHelper.audioManager 
             && null != self.mMMDAnimHelper.audioManager.audio)
             self.mMMDAnimHelper.audioManager.audio.stop();
@@ -400,46 +505,77 @@ class BugByDaylight {
 
         self.mLastMotionIndex = motion;
         self.mMMDReady = false;
+        self.mClock = undefined;
+        self.mCamera = null;
         self.mContinuous = false;
         // if (motion == self.COFFIN_DANCE_INDEX) {
         //     for (var i = 0; i < self.mModelForCoffinDanceFiles.length; i++) {
         //         self.loadMMD(self.mModelForCoffinDanceFiles[i], 1, self.mMotionForCoffinDanceFiles[i], null, null);
         //     }
         // }
-        self.loadMMD(self.mModelFiles[self.mLastModelIndex], 1, self.mMotionFiles[motion], 
+        self.loadMMD(self.mModelFiles[self.mLastGameIndex][self.mLastModelIndex], 1, self.mMotionFiles[motion], 
             self.mCameraFiles[motion], self.mMusicFiles[motion]);
+    }
+
+    sceneSelect(sceneId) {
+        this.mLastSceneIndex = sceneId;
+        this.deleteGroup(this.mLastScene);
+        this.mScene.remove(this.mLastScene);
+
+        this.loadMMDScene(this.mSceneFiles[sceneId], 1);
+    }
+
+    gameSelect(gameId) {
+        const self = this;
+        self.mLastGameIndex = gameId;
+        $('#character_select').children().remove();
+        var modelArray = self.mModelNameFiles[gameId];
+        for (let i = 0; i < modelArray.length; i++) {
+            $('#character_select').append('<option value=' + i + '>' + modelArray[i] + '</option>');
+        }
+        self.characterSelect(0)
     }
 
     characterSelect(character) {
         const self = this;
         self.mAbortLoader = true;
-        if (undefined != self.mPhysicsHelper)
+        if (undefined != self.mPhysicsHelper) {
+            self.deleteGroup(self.mPhysicsHelper);
             self.mScene.remove(self.mPhysicsHelper);
-        if (undefined != self.mLastModel)
+        }
+        if (undefined != self.mLastModel) {
+            self.deleteGroup(self.mLastModel);
             self.mScene.remove(self.mLastModel);
+        }
         if (null != self.mMMDAnimHelper && null != self.mMMDAnimHelper.audioManager 
             && null != self.mMMDAnimHelper.audioManager.audio)
             self.mMMDAnimHelper.audioManager.audio.stop();
         self.mMMDAnimHelper = null;
 
-        self.mLastModelIndex = character;
+        self.mLastModelIndex = character.value;
         self.mMMDReady = false;
+        self.mClock = undefined;
+        self.mCamera = null;
         self.mContinuous = false;
-        self.loadMMD(self.mModelFiles[character], 1, this.mMotionFiles[self.mLastMotionIndex], 
+        self.loadMMD(self.mModelFiles[self.mLastGameIndex][character], 1, this.mMotionFiles[self.mLastMotionIndex], 
             this.mCameraFiles[self.mLastMotionIndex], this.mMusicFiles[self.mLastMotionIndex]);
     }
 
     render() {
-        var delta = this.mClock.getDelta();
+        if (this.mMMDReady) {
+            if (undefined == this.mClock)
+                this.mClock = new THREE.Clock();
+            var delta = this.mClock.getDelta();
+
+            if (null != this.mMMDAnimHelper) {
+                this.mMMDAnimHelper.animate(delta);
+            }
+            if (this.mPhysicsHelper != undefined && this.mPhysicsHelper.visible) 
+                this.mPhysicsHelper.update();
+        }
 
         this.mRenderer.clear();
         this.mRenderer.render(this.mScene, this.mCamera);
-
-        if (null != this.mMMDAnimHelper && this.mMMDReady) {
-            this.mMMDAnimHelper.animate(delta);
-        }
-        if (this.mPhysicsHelper != undefined && this.mPhysicsHelper.visible) 
-            this.mPhysicsHelper.update();
 
         if (null != this.mStats)
             this.mStats.update();
@@ -506,7 +642,7 @@ class BugByDaylight {
                 if (fileType == "音频文件") {
                     // $("#progressTitle").html("当前音乐：" + fileName);
                     console.log("所有文件已加载" + "</br>" + "处理文件中...");
-                    document.getElementById('text-progress').innerHTML = "加载完成";
+                    document.getElementById('text-progress').innerHTML = "完成";
                 }
             } else {
                 // var percentComplete = Math.round((xhr.loaded / xhr.total * 100), 2);
@@ -516,7 +652,7 @@ class BugByDaylight {
                 // $("#progressBar").attr("style", "width:" + progressBarStyleValue + ";");
                 // $("#progressBar").attr("class", "progress-bar progress-bar-info") 
                 var percentComplete = Math.round((xhr.loaded / xhr.total * 100), 2);
-                document.getElementById('text-progress').innerHTML = fileType + ": " + percentComplete + '%';
+                document.getElementById('text-progress').innerHTML = fileType + " —— " + percentComplete + '%';
                 bar.style.width = percentComplete + '%'
             }
         } else {
@@ -581,6 +717,38 @@ class BugByDaylight {
         }
         this.mPhysicsHelper.visible = this.mShowAssist;
         this.mIkHelper.visible = this.mShowAssist;
+    }
+
+    deleteGroup(group) {
+        if (!group) return ;
+        if (group instanceof THREE.Mesh) {
+            if (null != group.geometry) {
+                group.geometry.dispose();
+                group.geometry = null;
+            }
+            return ;
+        }
+        // 删除掉所有的模型组内的mesh
+        group.traverse(function (item) {
+            if (item instanceof THREE.Mesh) {
+                if (null != item.geometry) {
+                    item.geometry.dispose(); // 删除几何体
+                    item.geometry = null;
+                }
+
+                if (null != item.material) {
+                    // item.material.dispose(); // 删除材质
+                    item.material = null;
+                }
+            }
+        });
+    }
+
+    onDestroy() {
+        var children = this.mScene.children;
+        for (var i = 0; i < children.length; i++) {
+            deleteGroup(children[i]);
+        }
     }
 }
 

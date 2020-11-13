@@ -1,0 +1,422 @@
+root ground: 0 0 0 0 0 0 1 1 1
+root hips: 0 0 0 0 0 0 1 1 1
+pelvis: 0 0 0 0 0 0 1 1 1
+leg left thigh: 0 0 0 0 0 0 1 1 1
+leg left knee: 0 0 0 0 0 0 1 1 1
+leg left ankle: 0 0 0 0 0 0 1 1 1
+leg left toes: 0 0 0 0 0 0 1 1 1
+accessory attach ankle left: 0 0 0 0 0 0 1 1 1
+leg left knee ctr: 0 0 0 0 0 0 1 1 1
+outfit root shoes left: 0 0 0 0 0 0 1 1 1
+outfit shoes left a: 0 0 0 0 0 0 1 1 1
+outfit shoes left b: 0 0 0 0 0 0 1 1 1
+leg left thigh ctr: 0 0 0 0 0 0 1 1 1
+leg left thigh ctr 2: 0 0 0 0 0 0 1 1 1
+leg left thigh adj a: 0 0 0 0 0 0 1 1 1
+leg left thigh adj b: 0 0 0 0 0 0 1 1 1
+leg left thigh adj c: 0 0 0 0 0 0 1 1 1
+leg left thigh adj d: 0 0 0 0 0 0 1 1 1
+leg left thigh adj e: 0 0 0 0 0 0 1 1 1
+leg left thigh adj f: 0 0 0 0 0 0 1 1 1
+leg right thigh: 0 0 0 0 0 0 1 1 1
+leg right knee: 0 0 0 0 0 0 1 1 1
+leg right ankle: 0 0 0 0 0 0 1 1 1
+leg right toes: 0 0 0 0 0 0 1 1 1
+accessory attach ankle right: 0 0 0 0 0 0 1 1 1
+leg right knee ctr: 0 0 0 0 0 0 1 1 1
+outfit root shoes right: 0 0 0 0 0 0 1 1 1
+outfit shoes right a: 0 0 0 0 0 0 1 1 1
+outfit shoes right b: 0 0 0 0 0 0 1 1 1
+leg right thigh ctr: 0 0 0 0 0 0 1 1 1
+leg right thigh ctr 2: 0 0 0 0 0 0 1 1 1
+leg right thigh adj a: 0 0 0 0 0 0 1 1 1
+leg right thigh adj b: 0 0 0 0 0 0 1 1 1
+leg right thigh adj c: 0 0 0 0 0 0 1 1 1
+leg right thigh adj d: 0 0 0 0 0 0 1 1 1
+leg right thigh adj e: 0 0 0 0 0 0 1 1 1
+leg right thigh adj f: 0 0 0 0 0 0 1 1 1
+outfit root leg right bun: 0 0 0 0 0 0 1 1 1
+outfit leg right bun a: 0 0 0 0 0 0 1 1 1
+outfit leg right bun b: 0 0 0 0 0 0 1 1 1
+outfit root leg right ribbon: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper right a: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper right b: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper right c: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper right d: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower right a: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower right b: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower right c: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower right d: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper left a: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper left b: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper left c: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon upper left d: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower left a: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower left b: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower left c: 0 0 0 0 0 0 1 1 1
+outfit leg right ribbon lower left d: 0 0 0 0 0 0 1 1 1
+leg left thigh ctr 3: 0 0 0 0 0 0 1 1 1
+leg right thigh ctr 3: 0 0 0 0 0 0 1 1 1
+leg left butt base: 0 0 0 0 0 0 1 1 1
+leg left butt ctr a: 0 0 0 0 0 0 1 1 1
+leg left butt ctr b: 0 0 0 0 0 0 1 1 1
+leg left butt ctr b3: 0 0 0 0 0 0 1 1 1
+leg left butt ctr c: 0 0 0 0 0 0 1 1 1
+leg left butt ctr d: 0 0 0 0 0 0 1 1 1
+leg left butt ctr e: 0 0 0 0 0 0 1 1 1
+leg left butt ctr f: 0 0 0 0 0 0 1 1 1
+leg left butt ctr g: 0 0 0 0 0 0 1 1 1
+leg left butt ctr h: 0 0 0 0 0 0 1 1 1
+leg left butt ctr i: 0 0 0 0 0 0 1 1 1
+leg left butt ctr j: 0 0 0 0 0 0 1 1 1
+leg left butt ctr k: 0 0 0 0 0 0 1 1 1
+leg left butt ctr l: 0 0 0 0 0 0 1 1 1
+leg left butt ctr m: 0 0 0 0 0 0 1 1 1
+leg right butt base: 0 0 0 0 0 0 1 1 1
+leg right butt ctr a: 0 0 0 0 0 0 1 1 1
+leg right butt ctr b: 0 0 0 0 0 0 1 1 1
+leg right butt ctr c: 0 0 0 0 0 0 1 1 1
+leg right butt ctr d: 0 0 0 0 0 0 1 1 1
+leg right butt ctr e: 0 0 0 0 0 0 1 1 1
+leg right butt ctr f: 0 0 0 0 0 0 1 1 1
+leg right butt ctr g: 0 0 0 0 0 0 1 1 1
+leg right butt ctr h: 0 0 0 0 0 0 1 1 1
+leg right butt ctr i: 0 0 0 0 0 0 1 1 1
+leg right butt ctr j: 0 0 0 0 0 0 1 1 1
+leg right butt ctr k: 0 0 0 0 0 0 1 1 1
+leg right butt ctr l: 0 0 0 0 0 0 1 1 1
+leg right butt ctr m: 0 0 0 0 0 0 1 1 1
+leg right butt ctr n: 0 0 0 0 0 0 1 1 1
+outfit root skirt: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 2 a: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 2 b: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 2 c: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 2 d: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 2 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 2 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 2 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 2 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 2 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 2 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 4 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 4 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 4 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 4 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 4 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front middle a: 0 0 0 0 0 0 1 1 1
+outfit skirt front middle b: 0 0 0 0 0 0 1 1 1
+outfit skirt front middle c: 0 0 0 0 0 0 1 1 1
+outfit skirt front middle d: 0 0 0 0 0 0 1 1 1
+outfit skirt front middle e: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 1 a: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 1 b: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 1 c: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 1 d: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 1 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 3 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 3 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 3 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 3 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 3 e: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 2 a: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 2 b: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 2 c: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 2 d: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 2 e: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 3 a: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 3 b: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 3 c: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 3 d: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 3 e: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 3 a: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 3 b: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 3 c: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 3 d: 0 0 0 0 0 0 1 1 1
+outfit skirt back left 3 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 1 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 1 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 1 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 1 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 1 e: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 1 a: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 1 b: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 1 c: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 1 d: 0 0 0 0 0 0 1 1 1
+outfit skirt back right 1 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 1 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 1 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 1 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 1 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 1 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 3 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 3 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 3 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 3 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 3 e: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 4 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 4 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 4 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 4 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front right 4 e: 0 0 0 0 0 0 1 1 1
+outfit skirt back middle a: 0 0 0 0 0 0 1 1 1
+outfit skirt back middle b: 0 0 0 0 0 0 1 1 1
+outfit skirt back middle c: 0 0 0 0 0 0 1 1 1
+outfit skirt back middle d: 0 0 0 0 0 0 1 1 1
+outfit skirt back middle e: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 2 a: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 2 b: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 2 c: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 2 d: 0 0 0 0 0 0 1 1 1
+outfit skirt front left 2 e: 0 0 0 0 0 0 1 1 1
+spine lower: 0 0 0 0 0 0 1 1 1
+spine upper: 0 0 0 0 0 0 1 1 1
+head neck lower: 0 0 0 0 0 0 1 1 1
+head neck upper: 0 0 0 0 0 0 1 1 1
+head eyebrow middle: 0 0 0 0 0 0 1 1 1
+head lip upper middle: 0 0 0 0 0 0 1 1 1
+head nose middle: 0 0 0 0 0 0 1 1 1
+head jaw: 0 0 0 0 0 0 1 1 1
+head lip lower middle: 0 0 0 0 0 0 1 1 1
+head tongue a: 0 0 0 0 0 0 1 1 1
+head tongue b: 0 0 0 0 0 0 1 1 1
+head lip lower left: 0 0 0 0 0 0 1 1 1
+head lip lower right: 0 0 0 0 0 0 1 1 1
+head cheek left a: 0 0 0 0 0 0 1 1 1
+head cheek left b: 0 0 0 0 0 0 1 1 1
+head cheek left c: 0 0 0 0 0 0 1 1 1
+head eyeball left: 0 0 0 0 0 0 1 1 1
+head eyelid lower left a: 0 0 0 0 0 0 1 1 1
+head eyelid lower left b: 0 0 0 0 0 0 1 1 1
+head eyebrow left a: 0 0 0 0 0 0 1 1 1
+head eyebrow left b: 0 0 0 0 0 0 1 1 1
+head eyebrow left c: 0 0 0 0 0 0 1 1 1
+head eyelid upper left: 0 0 0 0 0 0 1 1 1
+head forehead left: 0 0 0 0 0 0 1 1 1
+head lip corner left: 0 0 0 0 0 0 1 1 1
+head lip upper left: 0 0 0 0 0 0 1 1 1
+head nose left a: 0 0 0 0 0 0 1 1 1
+head nose left b: 0 0 0 0 0 0 1 1 1
+head nose left c: 0 0 0 0 0 0 1 1 1
+head nose left d: 0 0 0 0 0 0 1 1 1
+head cheek right a: 0 0 0 0 0 0 1 1 1
+head cheek right b: 0 0 0 0 0 0 1 1 1
+head cheek right c: 0 0 0 0 0 0 1 1 1
+head eyeball right: 0 0 0 0 0 0 1 1 1
+head eyelid lower right a: 0 0 0 0 0 0 1 1 1
+head eyelid lower right b: 0 0 0 0 0 0 1 1 1
+head eyebrow right a: 0 0 0 0 0 0 1 1 1
+head eyebrow right b: 0 0 0 0 0 0 1 1 1
+head eyebrow right c: 0 0 0 0 0 0 1 1 1
+head eyelid upper right: 0 0 0 0 0 0 1 1 1
+head forehead right: 0 0 0 0 0 0 1 1 1
+head lip corner right: 0 0 0 0 0 0 1 1 1
+head lip upper right: 0 0 0 0 0 0 1 1 1
+head nose right a: 0 0 0 0 0 0 1 1 1
+head nose right b: 0 0 0 0 0 0 1 1 1
+head nose right c: 0 0 0 0 0 0 1 1 1
+head nose right d: 0 0 0 0 0 0 1 1 1
+arm left shoulder 1: 0 0 0 0 0 0 1 1 1
+arm left shoulder 2: 0 0 0 0 0 0 1 1 1
+arm left elbow: 0 0 0 0 0 0 1 1 1
+arm left wrist: 0 0 0 0 0 0 1 1 1
+arm left hand root: 0 0 0 0 0 0 1 1 1
+arm left finger 2a: 0 0 0 0 0 0 1 1 1
+arm left finger 2b: 0 0 0 0 0 0 1 1 1
+arm left finger 2c: 0 0 0 0 0 0 1 1 1
+arm left metacarpal: 0 0 0 0 0 0 1 1 1
+arm left finger 5a: 0 0 0 0 0 0 1 1 1
+arm left finger 5b: 0 0 0 0 0 0 1 1 1
+arm left finger 5c: 0 0 0 0 0 0 1 1 1
+arm left finger 4a: 0 0 0 0 0 0 1 1 1
+arm left finger 4b: 0 0 0 0 0 0 1 1 1
+arm left finger 4c: 0 0 0 0 0 0 1 1 1
+arm left finger 3a: 0 0 0 0 0 0 1 1 1
+arm left finger 3b: 0 0 0 0 0 0 1 1 1
+arm left finger 3c: 0 0 0 0 0 0 1 1 1
+arm left finger 1a: 0 0 0 0 0 0 1 1 1
+arm left finger 1b: 0 0 0 0 0 0 1 1 1
+arm left finger 1c: 0 0 0 0 0 0 1 1 1
+outfit root hand left: 0 0 0 0 0 0 1 1 1
+outfit hand left a: 0 0 0 0 0 0 1 1 1
+outfit hand left b: 0 0 0 0 0 0 1 1 1
+arm left elbow ctr: 0 0 0 0 0 0 1 1 1
+arm left elbow ctr 2: 0 0 0 0 0 0 1 1 1
+arm left wrist ctr: 0 0 0 0 0 0 1 1 1
+accessory attach wrist left: 0 0 0 0 0 0 1 1 1
+arm left shoulder 2 ctr: 0 0 0 0 0 0 1 1 1
+arm left shoulder 2 ctr 2: 0 0 0 0 0 0 1 1 1
+outfit root malfunction back buns left: 0 0 0 0 0 0 1 1 1
+outfit malfunction back buns left a: 0 0 0 0 0 0 1 1 1
+outfit malfunction back buns left b: 0 0 0 0 0 0 1 1 1
+outfit malfunction back buns left c: 0 0 0 0 0 0 1 1 1
+outfit root malfunction arms left ribbons back: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons back a: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons back b: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons back c: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons back d: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons back e: 0 0 0 0 0 0 1 1 1
+outfit root malfunction arms left lace: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left lace a 1: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left lace b 1: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left lace c 1: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left lace a 2: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left lace b 2: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left lace c 2: 0 0 0 0 0 0 1 1 1
+outfit root normal arms left lace: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace a 1: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace b 1: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace c 1: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace a 2: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace b 2: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace c 2: 0 0 0 0 0 0 1 1 1
+outfit normal arms left lace d 2: 0 0 0 0 0 0 1 1 1
+arm right shoulder 1: 0 0 0 0 0 0 1 1 1
+arm right shoulder 2: 0 0 0 0 0 0 1 1 1
+arm right elbow: 0 0 0 0 0 0 1 1 1
+arm right wrist: 0 0 0 0 0 0 1 1 1
+arm right hand root: 0 0 0 0 0 0 1 1 1
+arm right finger 2a: 0 0 0 0 0 0 1 1 1
+arm right finger 2b: 0 0 0 0 0 0 1 1 1
+arm right finger 2c: 0 0 0 0 0 0 1 1 1
+arm right metacarpal: 0 0 0 0 0 0 1 1 1
+arm right finger 5a: 0 0 0 0 0 0 1 1 1
+arm right finger 5b: 0 0 0 0 0 0 1 1 1
+arm right finger 5c: 0 0 0 0 0 0 1 1 1
+arm right finger 4a: 0 0 0 0 0 0 1 1 1
+arm right finger 4b: 0 0 0 0 0 0 1 1 1
+arm right finger 4c: 0 0 0 0 0 0 1 1 1
+arm right finger 3a: 0 0 0 0 0 0 1 1 1
+arm right finger 3b: 0 0 0 0 0 0 1 1 1
+arm right finger 3c: 0 0 0 0 0 0 1 1 1
+arm right finger 1a: 0 0 0 0 0 0 1 1 1
+arm right finger 1b: 0 0 0 0 0 0 1 1 1
+arm right finger 1c: 0 0 0 0 0 0 1 1 1
+outfit root hand right: 0 0 0 0 0 0 1 1 1
+outfit hand right a: 0 0 0 0 0 0 1 1 1
+outfit hand right b: 0 0 0 0 0 0 1 1 1
+arm right elbow ctr: 0 0 0 0 0 0 1 1 1
+arm right elbow ctr 2: 0 0 0 0 0 0 1 1 1
+arm right wrist ctr: 0 0 0 0 0 0 1 1 1
+accessory attach wrist right: 0 0 0 0 0 0 1 1 1
+arm right shoulder 2 ctr: 0 0 0 0 0 0 1 1 1
+arm right shoulder 2 ctr 2: 0 0 0 0 0 0 1 1 1
+breast left base: 0 0 0 0 0 0 1 1 1
+breast left a: 0 0 0 0 0 0 1 1 1
+breast left b: 0 0 0 0 0 0 1 1 1
+breast left b6: 0 0 0 0 0 0 1 1 1
+breast left c: 0 0 0 0 0 0 1 1 1
+breast left d: 0 0 0 0 0 0 1 1 1
+breast left e: 0 0 0 0 0 0 1 1 1
+breast left f: 0 0 0 0 0 0 1 1 1
+breast left g: 0 0 0 0 0 0 1 1 1
+breast left h: 0 0 0 0 0 0 1 1 1
+breast left i: 0 0 0 0 0 0 1 1 1
+breast left j: 0 0 0 0 0 0 1 1 1
+breast left k: 0 0 0 0 0 0 1 1 1
+breast left l: 0 0 0 0 0 0 1 1 1
+breast left m: 0 0 0 0 0 0 1 1 1
+breast left n: 0 0 0 0 0 0 1 1 1
+breast left o: 0 0 0 0 0 0 1 1 1
+breast left p: 0 0 0 0 0 0 1 1 1
+breast left r: 0 0 0 0 0 0 1 1 1
+breast right base: 0 0 0 0 0 0 1 1 1
+breast right a: 0 0 0 0 0 0 1 1 1
+breast right b: 0 0 0 0 0 0 1 1 1
+breast right c: 0 0 0 0 0 0 1 1 1
+breast right d: 0 0 0 0 0 0 1 1 1
+breast right e: 0 0 0 0 0 0 1 1 1
+breast right f: 0 0 0 0 0 0 1 1 1
+breast right g: 0 0 0 0 0 0 1 1 1
+breast right h: 0 0 0 0 0 0 1 1 1
+breast right i: 0 0 0 0 0 0 1 1 1
+breast right j: 0 0 0 0 0 0 1 1 1
+breast right k: 0 0 0 0 0 0 1 1 1
+breast right l: 0 0 0 0 0 0 1 1 1
+breast right m: 0 0 0 0 0 0 1 1 1
+breast right n: 0 0 0 0 0 0 1 1 1
+breast right o: 0 0 0 0 0 0 1 1 1
+breast right p: 0 0 0 0 0 0 1 1 1
+breast right q: 0 0 0 0 0 0 1 1 1
+breast right r: 0 0 0 0 0 0 1 1 1
+outfit root malfunction back buns right: 0 0 0 0 0 0 1 1 1
+outfit malfunction back buns right a: 0 0 0 0 0 0 1 1 1
+outfit malfunction back buns right b: 0 0 0 0 0 0 1 1 1
+outfit malfunction back buns right c: 0 0 0 0 0 0 1 1 1
+outfit root malfunction arms left ribbons front: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons front a: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons front b: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons front c: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons front d: 0 0 0 0 0 0 1 1 1
+outfit malfunction arms left ribbons front e: 0 0 0 0 0 0 1 1 1
+outfit root static arms right ribbons: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons front a: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons front b: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons front c: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons front d: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons front e: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons back a: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons back b: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons back c: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons back d: 0 0 0 0 0 0 1 1 1
+outfit static arms right ribbons back e: 0 0 0 0 0 0 1 1 1
+outfit root static arms right lace: 0 0 0 0 0 0 1 1 1
+outfit static arms right a 1: 0 0 0 0 0 0 1 1 1
+outfit static arms right b 1: 0 0 0 0 0 0 1 1 1
+outfit static arms right c 1: 0 0 0 0 0 0 1 1 1
+outfit static arms right a 2: 0 0 0 0 0 0 1 1 1
+outfit static arms right b 2: 0 0 0 0 0 0 1 1 1
+outfit static arms right c 2: 0 0 0 0 0 0 1 1 1
+outfit static arms right d 2: 0 0 0 0 0 0 1 1 1
+outfit root normal back ribbons: 0 0 0 0 0 0 1 1 1
+outfit normal back ribbons a: 0 0 0 0 0 0 1 1 1
+outfit normal back ribbons b: 0 0 0 0 0 0 1 1 1
+outfit normal back ribbons c: 0 0 0 0 0 0 1 1 1
+outfit root normal arms left ribbons: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons back a: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons back b: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons back c: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons back d: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons back e: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons front a: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons front b: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons front c: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons front d: 0 0 0 0 0 0 1 1 1
+outfit normal arms left ribbons front e: 0 0 0 0 0 0 1 1 1
+outfit root normal neck: 0 0 0 0 0 0 1 1 1
+outfit normal neck a: 0 0 0 0 0 0 1 1 1
+outfit normal neck b: 0 0 0 0 0 0 1 1 1
+outfit normal neck c: 0 0 0 0 0 0 1 1 1
+outfit root malfunction neck: 0 0 0 0 0 0 1 1 1
+outfit malfunction neck a: 0 0 0 0 0 0 1 1 1
+outfit malfunction neck b: 0 0 0 0 0 0 1 1 1
+outfit malfunction neck c: 0 0 0 0 0 0 1 1 1
+accessory attach head accessory: 0 0 0 0 0 0 1 1 1
+hair root: 0 0 0 0 0 0 1 1 1
+hair root front: 0 0 0 0 0 0 1 1 1
+hair front middle 1: 0 0 0 0 0 0 1 1 1
+hair front middle 2: 0 0 0 0 0 0 1 1 1
+hair front middle 3: 0 0 0 0 0 0 1 1 1
+hair front middle 4: 0 0 0 0 0 0 1 1 1
+hair front middle 5: 0 0 0 0 0 0 1 1 1
+hair front left a 1: 0 0 0 0 0 0 1 1 1
+hair front left a 2: 0 0 0 0 0 0 1 1 1
+hair front left a 3: 0 0 0 0 0 0 1 1 1
+hair front left a 4: 0 0 0 0 0 0 1 1 1
+hair front left a 5: 0 0 0 0 0 0 1 1 1
+hair front left a 6: 0 0 0 0 0 0 1 1 1
+hair front right a 1: 0 0 0 0 0 0 1 1 1
+hair front right a 2: 0 0 0 0 0 0 1 1 1
+hair front right a 3: 0 0 0 0 0 0 1 1 1
+hair front right a 4: 0 0 0 0 0 0 1 1 1
+hair front right a 5: 0 0 0 0 0 0 1 1 1
+hair front right a 6: 0 0 0 0 0 0 1 1 1
+hair front left b 1: 0 0 0 0 0 0 1 1 1
+hair front left b 2: 0 0 0 0 0 0 1 1 1
+hair front left b 3: 0 0 0 0 0 0 1 1 1
+hair front left b 4: 0 0 0 0 0 0 1 1 1
+hair front left b 5: 0 0 0 0 0 0 1 1 1
+hair front right b 1: 0 0 0 0 0 0 1 1 1
+hair front right b 2: 0 0 0 0 0 0 1 1 1
+hair front right b 3: 0 0 0 0 0 0 1 1 1
+hair front right b 4: 0 0 0 0 0 0 1 1 1
+hair front right b 5: 0 0 0 0 0 0 1 1 1

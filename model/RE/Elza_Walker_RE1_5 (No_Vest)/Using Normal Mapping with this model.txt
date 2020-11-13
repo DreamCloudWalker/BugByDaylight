@@ -1,0 +1,19 @@
+1) Note that I assume you already know how to apply effects to a model.
+2) In the MMEffects tab within MikuMikuDance, open the Map Effect File
+window and find the model in the list.
+3) Right-click on it and select "Subset-Extract"
+4)You will see a list of materials appear under the object. Apply the
+following effects to each material (the normal-mapping effects are found 
+in the same folder containing the model's textures):
+
+For ELZA WALKER (No Vest Ver.):
+Shoes; Buckles -> boots.fx
+Eyes -> eyes.fx
+Bust; Collar Part; Suit; Knee Guards -> suit_1.fx
+Sleeves -> suit_2.fx
+Mouth 1; Mouth 2; Head -> head.fx
+Neck -> neck.fx
+Hands -> hands.fx
+Logo; Eye Shading; Lashes -> default.fx
+Hair -> hair.fx
+Hair Alpha; Bangs -> hair_alpha.fx
