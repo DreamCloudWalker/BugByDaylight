@@ -170,8 +170,8 @@
                     <option value="12" id="X-Men">
                         X战警
                     </option>
-                    <option value="13" id="StarCraft">
-                        星际争霸
+                    <option value="13" id="Other">
+                        其他游戏
                     </option>
                 </select>
                 <h4 style="width: 50px; height: 15px; margin: 2px">模型：</h4>
@@ -191,51 +191,141 @@
                     <option value="2" id="hongzhaoyuan">
                         红昭愿
                     </option>
-                    <option value="3" id="hongzhaoyuan">
+                    <option value="3" id="zuilin">
                         醉伶
                     </option>
-                    <option value="4" id="hongzhaoyuan">
+                    <option value="4" id="lianrenxin">
                         恋人心
                     </option>
-                    <option value="5" id="hongzhaoyuan">
+                    <option value="5" id="xiaoqiuyueming">
+                        晓秋月明
+                    </option>
+                    <option value="6" id="yuezhongtian">
+                        月中天
+                    </option>
+                    <option value="7" id="xiashan">
+                        下山
+                    </option>
+                    <option value="8" id="xingyunlin">
+                        行云令
+                    </option>
+                    <option value="9" id="qiandengyuan">
+                        千灯愿
+                    </option>
+                    <option value="10" id="banhusha">
+                        半壶纱
+                    </option>
+                    <option value="11" id="learncat">
                         学猫叫
                     </option>
-                    <option value="6" id="hongzhaoyuan">
+                    <option value="12" id="haicaowu">
                         海草舞
                     </option>
-                    <option value="7" id="hongzhaoyuan">
+                    <option value="13" id="littleapple">
                         小苹果
                     </option>
-                    <option value="8" id="barbarbar">
+                    <option value="14" id="jile">
+                        极乐净土
+                    </option>
+                    <option value="15" id="barbarbar">
                         Bar Bar Bar
                     </option>
-                    <option value="9" id="WhatYouWaitingFor">
+                    <option value="16" id="WhatYouWaitingFor">
                         WhatYouWaitingFor
                     </option>
-                    <option value="10" id="coffin_dance">
+                    <option value="17" id="birthday">
+                        Birthday
+                    </option>
+                    <option value="18" id="BangBang">
+                        BangBang
+                    </option>
+                    <option value="19" id="BoPeep">
+                        BoPeep
+                    </option>
+                    <option value="20" id="coffin_dance">
                         黑人抬棺
                     </option>
-                    <option value="11" id="basket_dance">
+                    <option value="21" id="mabaoguo">
                         闪电五连鞭
+                    </option>
+                    <option value="22" id="basket_dance">
+                        蔡徐坤
+                    </option>
+                    <option value="23" id="badwater">
+                        我的悲伤是水做的
                     </option>
                 </select>
 
-                <h4 style="width: 50px; height: 15px; margin: 2px; margin-left: 40px;">场景：</h4>
+                <h4 style="width: 55px; height: 15px; margin: 2px; margin-left: 40px;">场景：</h4>
                 <select id="scene_select" name="scene" style="width: 70px; height: 18px; margin: 5px" onchange="game.sceneSelect.call(game, value)">
-                    <option value="0" id="bamboo_garden">
-                        园林
+                    <option value="0" id="DOA2_Pool">
+                        夏日泳池
                     </option>
-                    <option value="1" id="chinese_night">
+                    <option value="1" id="DOA5_Sakura">
+                        樱花小院
+                    </option>
+                    <option value="2" id="hot_spring">
+                        温泉
+                    </option>
+                    <option value="3" id="bamboo_garden">
+                        竹林小筑
+                    </option>
+                    <option value="4" id="chinese_night">
                         古风室内
                     </option>
-                    <option value="2" id="girl's_room">
+                    <option value="5" id="girl's_room">
                         闺房
+                    </option>
+                    <option value="6" id="raccoon_city">
+                        浣熊市
+                    </option>
+                    <option value="7" id="raccoon_city">
+                        浣熊市2
+                    </option>
+                    <option value="8" id="raccoon_city">
+                        斯宾塞官邸
+                    </option>
+                    <option value="9" id="island">
+                        海边沙滩小岛
+                    </option>
+                    <option value="10" id="island">
+                        城市花园
+                    </option>
+                    <option value="11" id="exhibition">
+                        展厅
+                    </option>
+                    <option value="12" id="desert">
+                        沙漠
+                    </option>
+                    <option value="13" id="countryside">
+                        乡村道路
+                    </option>
+                    <option value="14" id="MidLakePavilion">
+                        湖心亭
+                    </option>
+                    <option value="15" id="WaterLilyPavilion">
+                        睡莲湖心亭
+                    </option>
+                    <option value="16" id="forest">
+                        山间美景
+                    </option>
+                    <option value="17" id="JP_Yard">
+                        日式小院
+                    </option>
+                    <option value="18" id="Street">
+                        街道
                     </option>
                 </select>
 
                 <label style="width: 70px; margin: 2px; margin-left: 40px;">自动镜头</label>
                 <label class="switch" style="width: 33px; margin: 4px">
                     <input id="auto_camera_switch" type="checkbox" checked onchange="game.updateAutoCameraStatus.call(game, checked)">
+                    <span class="slider round"></span>
+                </label>
+
+                <label id="day_or_night" style="width: 35px; margin: 2px; margin-left: 40px;">白天</label>
+                <label class="switch" style="width: 33px; margin: 4px">
+                    <input id="daynight_switch" type="checkbox" onchange="game.updateDayOrNight.call(game, checked)">
                     <span class="slider round"></span>
                 </label>
 
